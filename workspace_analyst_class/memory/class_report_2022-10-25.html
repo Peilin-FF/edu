@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>传感器原理与应用课程学习诊断报告 - 2022年10月25日</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+        header {
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #3498db;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        h3 {
+            color: #2c3e50;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        .summary-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-card {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .stat-label {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        .chart-container {
+            margin: 30px 0;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: white;
+        }
+        .chart-title {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        .knowledge-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .knowledge-table th {
+            background-color: #3498db;
+            color: white;
+            text-align: left;
+            padding: 12px;
+        }
+        .knowledge-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .knowledge-table tr:hover {
+            background-color: #f8f9fa;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        .badge-critical {
+            background-color: #e74c3c;
+            color: white;
+        }
+        .badge-moderate {
+            background-color: #f39c12;
+            color: white;
+        }
+        .badge-good {
+            background-color: #27ae60;
+            color: white;
+        }
+        .recommendation {
+            background-color: #e8f4fd;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .recommendation h4 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+            color: #7f8c8d;
+            font-size: 14px;
+            text-align: center;
+        }
+        .insight-box {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .insight-box h4 {
+            margin-top: 0;
+            color: #ff9800;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>传感器原理与应用课程学习诊断报告</h1>
+            <div class="subtitle">
+                考试日期：2022年10月25日 | 班级人数：5人 | 报告生成时间：2026年3月17日
+            </div>
+        </header>
+
+        <section>
+            <h2>一、总体表现概览</h2>
+            
+            <div class="summary-box">
+                <p>本次考试共35道题目，满分100分。班级整体表现良好，但存在明显的结构性薄弱环节。</p>
+            </div>
+
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-value">77.2</div>
+                    <div class="stat-label">平均分（满分100）</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">及格率</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">84.0</div>
+                    <div class="stat-label">最高分</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">61.0</div>
+                    <div class="stat-label">最低分</div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">分数分布图</div>
+                <iframe src="../statistical_data/charts/score_distribution.html" width="100%" height="400" frameborder="0"></iframe>
+            </div>
+
+            <div class="insight-box">
+                <h4>🔍 关键发现</h4>
+                <p>班级整体表现呈现两极分化趋势：最高分84分与最低分61分相差23分，表明学习效果存在较大个体差异。虽然及格率达到100%，但平均分77.2分显示整体掌握程度仍有提升空间。</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>二、高错误率题目分析</h2>
+            <p>本次考试共有4道题目错误率超过50%，反映了学生在相关知识点上存在系统性薄弱。</p>
+
+            <table class="knowledge-table">
+                <thead>
+                    <tr>
+                        <th>题目编号</th>
+                        <th>题目类型</th>
+                        <th>知识点</th>
+                        <th>错误率</th>
+                        <th>平均得分</th>
+                        <th>严重程度</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>018</td>
+                        <td>填空题</td>
+                        <td>应变效应</td>
+                        <td>100%</td>
+                        <td>0.0/3.0</td>
+                        <td><span class="badge badge-critical">严重</span></td>
+                    </tr>
+                    <tr>
+                        <td>016</td>
+                        <td>填空题</td>
+                        <td>传感器定义</td>
+                        <td>80%</td>
+                        <td>0.6/3.0</td>
+                        <td><span class="badge badge-critical">严重</span></td>
+                    </tr>
+                    <tr>
+                        <td>031</td>
+                        <td>多选题</td>
+                        <td>压电材料</td>
+                        <td>80%</td>
+                        <td>2.0/4.0</td>
+                        <td><span class="badge badge-critical">严重</span></td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>单选题</td>
+                        <td>含水量定义</td>
+                        <td>60%</td>
+                        <td>1.2/3.0</td>
+                        <td><span class="badge badge-critical">严重</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="chart-container">
+                <div class="chart-title">问题错误率分析</div>
+                <iframe src="../statistical_data/charts/question_accuracy.html" width="100%" height="500" frameborder="0"></iframe>
+            </div>
+
+            <div class="insight-box">
+                <h4>🔍 错误模式分析</h4>
+                <p><strong>应变效应（100%错误率）</strong>：所有学生均未掌握该知识点，表明教学或学习过程中存在系统性缺失。</p>
+                <p><strong>传感器定义（80%错误率）</strong>：学生对传感器基本概念理解不清晰，可能与概念抽象性有关。</p>
+                <p><strong>压电材料（80%错误率）</strong>：多选题错误率高，反映学生对压电材料的分类和应用场景掌握不足。</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>三、知识点掌握情况诊断</h2>
+            <p>基于课程知识框架，对各个知识点的掌握情况进行深入分析。</p>
+
+            <div class="chart-container">
+                <div class="chart-title">知识点掌握雷达图</div>
+                <iframe src="../statistical_data/charts/knowledge_radar.html" width="100%" height="500" frameborder="0"></iframe>
+            </div>
+
+            <h3>3.1 严重薄弱知识点（掌握率＜50%）</h3>
+            <table class="knowledge-table">
+                <thead>
+                    <tr>
+                        <th>知识点</th>
+                        <th>掌握率</th>
+                        <th>涉及题目</th>
+                        <th>诊断分析</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>应变效应</td>
+                        <td>0%</td>
+                        <td>018</td>
+                        <td>完全未掌握，需要系统性重新教学</td>
+                    </tr>
+                    <tr>
+                        <td>传感器定义</td>
+                        <td>20%</td>
+                        <td>016</td>
+                        <td>概念理解模糊，需强化定义教学</td>
+                    </tr>
+                    <tr>
+                        <td>含水量定义</td>
+                        <td>40%</td>
+                        <td>002</td>
+                        <td>概念混淆，需明确区分相关术语</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>3.2 中等薄弱知识点（掌握率50%-70%）</h3>
+            <table class="knowledge-table">
+                <thead>
+                    <tr>
+                        <th>知识点</th>
+                        <th>掌握率</th>
+                        <th>涉及题目</th>
+                        <th>诊断分析</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>光纤传感器应用</td>
+                        <td>60%</td>
+                        <td>004</td>
+                        <td>应用场景理解不足</td>
+                    </tr>
+                    <tr>
+                        <td>气敏电阻传感器应用</td>
+                        <td>60%</td>
+                        <td>010</td>
+                        <td>实际应用能力较弱</td>
+                    </tr>
+                    <tr>
+                        <td>物联网应用</td>
+                        <td>60%</td>
+                        <td>026</td>
+                        <td>系统应用理解不深</td>
+                    </tr>
+                    <tr>
+                        <td>车联网应用</td>
+                        <td>60%</td>
+                        <td>027</td>
+                        <td>新兴技术应用掌握不足</td>
+                    </tr>
+                    <tr>
+                        <td>热敏电阻材料</td>
+                        <td>60%</td>
+                        <td>034</td>
+                        <td>材料特性理解不全面</td>
+                    </tr>
+                    <tr>
+                        <td>压电材料</td>
+                        <td>62.9%</td>
+                        <td>031, 005</td>
+                        <td>分类和应用场景混淆</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>3.3 掌握良好知识点（掌握率≥70%）</h3>
+            <p>共有19个知识点掌握良好，包括：传感器技术检定与标度、热电效应、内光电效应、电阻应变片分类、有毒气体识别、光纤传光原理、自发电式传感器、图像传感器、气敏电阻传感器结构、传感器核心组成、物联网定义、传感器基本特性等。</p>
+        </section>
+
+        <section>
+            <h2>四、学习趋势与模式识别</h2>
+            
+            <div class="insight-box">
+                <h4>📈 整体学习趋势</h4>
+                <p>班级整体学习趋势呈现"基础扎实、应用薄弱"的特点。学生在基础概念和原理方面表现良好，但在应用型知识点上存在明显困难。</p>
+            </div>
+
+            <h3>4.1 结构性薄弱环节</h3>
+            <ul>
+                <li><strong>核心概念理解不足</strong>：传感器定义、应变效应等基础概念掌握率低</li>
+                <li><strong>应用能力薄弱</strong>：物联网、车联网等系统应用知识点错误率高</li>
+                <li><strong>材料特性混淆</strong>：压电材料、热敏电阻材料等材料类知识点掌握不牢</li>
+            </ul>
+
+            <h3>4.2 学习模式特征</h3>
+            <ul>
+                <li><strong>记忆型知识点掌握较好</strong>：定义、分类等记忆性内容掌握率较高</li>
+                <li><strong>理解应用型知识点薄弱</strong>：需要理解和应用的题目错误率明显偏高</li>
+                <li><strong>新兴技术掌握不足</strong>：物联网、车联网等新兴技术应用理解不深</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>五、教学建议与改进策略</h2>
+
+            <div class="recommendation">
+                <h4>🎯 建议一：强化基础概念教学</h4>
+                <p><strong>发现</strong>：传感器定义、应变效应等基础概念掌握率极低（0%-20%）</p>
+                <p><strong>行动</strong>：设计专项概念澄清课程，采用对比教学法，明确区分易混淆概念</p>
+                <p><strong>预期效果</strong>：基础概念掌握率提升至80%以上</p>
+            </div>
+
+            <div class="recommendation">
+                <h4>🎯 建议二：加强应用能力训练</h4>
+                <p><strong>发现</strong>：物联网、车联网等应用型知识点错误率高达40%-60%</p>
+                <p><strong>行动</strong>：增加案例分析教学，设计实际应用场景练习</p>
+                <p><strong>预期效果</strong>：应用型知识点掌握率提升至75%以上</p>
+            </div>
+
+            <div class="recommendation">
+                <h4>🎯 建议三：优化材料特性教学</h4>
+                <p><strong>发现</strong>：压电材料、热敏电阻材料等材料类知识点掌握不牢</p>
+                <p><strong>行动</strong>：采用实物展示+特性对比表，强化材料特性记忆</p>
+                <p><strong>预期效果</strong>：材料类知识点掌握率提升至85%以上</p>
+            </div>
+
+            <div class="recommendation">
+                <h4>🎯 建议四：实施分层差异化教学</h4>
+                <p><strong>发现</strong>：学生个体差异大（最高分84分，最低分61分）</p>
+                <p><strong>行动</strong>：根据掌握程度分组，设计不同难度的练习和辅导</p>
+                <p><strong>预期效果</strong>：缩小学生个体差异，整体平均分提升5-8分</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>六、总结与后续跟踪</h2>
+            
+            <div class="summary-box">
+                <p><strong>核心结论</strong>：班级整体表现良好，但存在明显的结构性薄弱。需要重点关注基础概念教学和应用能力培养。</p>
+                <p><strong>优先级</strong>：应变效应（0%掌握率）> 传感器定义（20%掌握率）> 应用型知识点（平均60%掌握率）</p>
+                <p><strong>跟踪建议</strong>：建议在2周后进行针对性测试，重点考察应变效应、传感器定义等薄弱知识点。每月进行一次学习效果评估，跟踪改进措施的实施效果。</p>
+            </div>
+
+            <div class="insight-box">
+                <h4>📊 数据驱动教学</h4>
+                <p>本次分析基于5名学生的35道题目作答数据，采用量化分析方法识别学习薄弱环节。建议教师：</p>
+                <ol>
+                    <li>利用本报告中的知识点掌握率数据，调整教学重点</li>
+                    <li>针对高错误率题目，设计专项练习和讲解</li>
+                    <li>关注学生个体差异，实施差异化教学策略</li>
+                    <li>建立持续的学习效果跟踪机制</li>
+                </ol>
+            </div>
+        </section>
+
+        <div class="footer">
+            <p>报告生成系统：OpenClaw学习分析系统 | 分析方法：基于SOUL.md分析框架</p>
+            <p>数据来源：传感器原理与应用课程2022年10月25日考试批改结果</p>
+            <p>© 2026 学习分析实验室 - 本报告仅供教学参考使用</p>
+        </div>
+    </div>
+</body>
+</html>

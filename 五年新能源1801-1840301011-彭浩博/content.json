@@ -1,0 +1,3290 @@
+[
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "18 级五年新能源传感器与物联网技术补考试题"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                124,
+                79,
+                872,
+                109
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "答题人：彭浩博 学号：1840301011 课程：18 级五年传感器与物联网技术补考 班级：默认班级 提交时"
+                    }
+                ]
+            },
+            "bbox": [
+                84,
+                131,
+                910,
+                147
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "2022-10-25 18:00 ip：223.104.202.55 考试得分： 83 分 批阅教师："
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                151,
+                675,
+                166
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "一.单选题(共15题,45分）"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                85,
+                186,
+                260,
+                200
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "1.利用某种标准器具对新研制或新生产的传感器进行全面的技术检定和标度，称为（ ）"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                212,
+                670,
+                225
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：3 分"
+                    }
+                ]
+            },
+            "bbox": [
+                104,
+                249,
+                213,
+                263
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A、 标定"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                268,
+                151,
+                281
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "B、 检测"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                360,
+                151,
+                373
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "C、 校准"
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                379,
+                151,
+                391
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案：A正确答案：A"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                397,
+                295,
+                411
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "2.含水量是指（ ）中的水分含量。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                416,
+                319,
+                429
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：0 分"
+                    }
+                ]
+            },
+            "bbox": [
+                104,
+                470,
+                213,
+                485
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "A、 液体"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "B、 固体"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "C、 混合物"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                489,
+                166,
+                558
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案：A正确答案：B"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                563,
+                295,
+                577
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "3. "
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                583,
+                102,
+                594
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "下面能测厚度的传感器是（ ）。"
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                620,
+                309,
+                633
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：3分"
+                    }
+                ]
+            },
+            "bbox": [
+                104,
+                657,
+                213,
+                670
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A、 光纤传感器"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                676,
+                194,
+                688
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "B、热电偶传感器"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "C、 超声波传感器"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                768,
+                211,
+                799
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案：C正确答案：C"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                804,
+                297,
+                819
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "4.医疗上的内窥镜是应用（）传感器。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                824,
+                351,
+                837
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：3分"
+                    }
+                ]
+            },
+            "bbox": [
+                104,
+                879,
+                213,
+                892
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A、 超声波传感器"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                898,
+                210,
+                910
+            ]
+        }
+    ],
+    [
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "B、 光纤传感器"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "C、 电阻传感器"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                187,
+                196,
+                219
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案：B正确答案：B"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                225,
+                294,
+                239
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "5.下面是压电材料的有（ ）。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                244,
+                290,
+                256
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：3 分"
+                    }
+                ]
+            },
+            "bbox": [
+                105,
+                300,
+                213,
+                313
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A、 压电陶瓷"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                318,
+                179,
+                331
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "B、 石英晶体"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "C、 以上两项都是"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                448,
+                211,
+                479
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案：C正确答案：C"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                483,
+                295,
+                498
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "6.热电偶的热电效应中产生的温差电动势由（ ）引起。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                502,
+                455,
+                517
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：3 分"
+                    }
+                ]
+            },
+            "bbox": [
+                105,
+                558,
+                213,
+                573
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "A、 温度差"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "B、 光照"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "C、 电子浓度"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                577,
+                179,
+                664
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案：A正确答案：A"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                707,
+                294,
+                721
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "7.下面电子器件是光电效应中利用内光电效应制成的光电器件的是（ ）。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                726,
+                576,
+                739
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：3分"
+                    }
+                ]
+            },
+            "bbox": [
+                105,
+                782,
+                213,
+                795
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "A、 光电倍增管"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "B、 光敏电阻"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "C、 光电池"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                800,
+                194,
+                887
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案：B正确答案：B"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                892,
+                294,
+                906
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "8.电阻应变片分为金属应变片和（ ）。"
+                    }
+                ]
+            },
+            "bbox": [
+                84,
+                77,
+                351,
+                90
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：3 分"
+                    }
+                ]
+            },
+            "bbox": [
+                104,
+                114,
+                213,
+                128
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A、 半导体应变片"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                133,
+                211,
+                146
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "B、 热应变片"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "C、 绝缘体应变片"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                262,
+                211,
+                294
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案：A正确答案：A"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                299,
+                295,
+                313
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "9.下面属于有毒气体的是（ ）。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                318,
+                305,
+                332
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：3 分"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                104,
+                374,
+                213,
+                387
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "A、 一氧化碳"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "B、 氢气"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "C、 酒精"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                393,
+                181,
+                443
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案：A正确答案：A"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                447,
+                295,
+                462
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "10.我们学过的酒精检测传感器是应用（）传感器工作原理。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                466,
+                492,
+                480
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：0 分"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                104,
+                521,
+                213,
+                535
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "A、气敏电阻传感器工作原理"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "B、热敏电阻传感器工作原理"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "C、 压敏电阻传感器工作原理"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                539,
+                285,
+                629
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案：B正确答案：A"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                633,
+                295,
+                646
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "11.音乐贺卡中的扬声器是利用（ ）传感器工作原理制作的。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                651,
+                495,
+                665
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：3 分"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                104,
+                707,
+                213,
+                721
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "A、 光电效应"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "B、 逆压电效应"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "C、 霍尔效应"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                726,
+                196,
+                776
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案：B正确答案：B"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                854,
+                295,
+                869
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "12.光在光纤内部传递是依靠光的（）原理实现。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                873,
+                420,
+                887
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：3 分"
+                    }
+                ]
+            },
+            "bbox": [
+                105,
+                96,
+                213,
+                109
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "A、 折射"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "B、 全反射"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "C、 衍射"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                115,
+                149,
+                200
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案：B正确答案：B"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                206,
+                295,
+                221
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "13.温度检测报警器应用的是下面的（）传感器原理工作。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                225,
+                480,
+                239
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：3 分"
+                    }
+                ]
+            },
+            "bbox": [
+                105,
+                281,
+                213,
+                294
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "A、 热敏电阻传感器"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "B、 电感式传感器"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "C、 霍尔传感器"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                300,
+                225,
+                387
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案：A正确答案：A"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                392,
+                295,
+                406
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "14.下列哪个传感器是自发电式传感器（ ）。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                411,
+                389,
+                424
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：3 分"
+                    }
+                ]
+            },
+            "bbox": [
+                105,
+                448,
+                213,
+                461
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "A、电容式传感器"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "B、 电阻式传感器"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "C、 压电式传感器"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                466,
+                210,
+                554
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案：C正确答案：C"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                558,
+                295,
+                571
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "15.手机中常用的图像传感器是（ ）。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                577,
+                344,
+                590
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：3分"
+                    }
+                ]
+            },
+            "bbox": [
+                105,
+                633,
+                213,
+                646
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "A、 CCD图像传感器"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "B、 MOS图像传感器"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "C、 CMOS图像传感器"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                652,
+                243,
+                701
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案：C正确答案：C"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                781,
+                295,
+                795
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "二.填空题(共5题,15分）"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                85,
+                816,
+                250,
+                831
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "16. "
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                843,
+                110,
+                854
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "传感器是把被测的 转换成与之有确定对应关系的电量装置。 学生得分：0分"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                860,
+                763,
+                873
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案："
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                879,
+                156,
+                891
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "第一空：压力量"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                898,
+                203,
+                910
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "正确答案："
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                77,
+                157,
+                91
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "第一空： 非电量"
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                96,
+                205,
+                109
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "批语："
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                114,
+                132,
+                128
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "17.传感器一般由 、转换元件和测量转换电路。 学生得分：0 分"
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                131,
+                648,
+                146
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案："
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                151,
+                157,
+                164
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "第一空： 敏感原件"
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                170,
+                218,
+                183
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "正确答案："
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                189,
+                157,
+                200
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "第一空： 敏感元件"
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                206,
+                218,
+                219
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "批语："
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                243,
+                132,
+                256
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "18.应变效应是指导体或半导体材料在 作用下产生机械变形，其电阻发生变化的现象。"
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                262,
+                729,
+                275
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：0 分"
+                    }
+                ]
+            },
+            "bbox": [
+                105,
+                281,
+                213,
+                294
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案："
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                300,
+                157,
+                313
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "第一空： 受外力作用"
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                318,
+                233,
+                331
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "正确答案："
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                337,
+                157,
+                350
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "第一空： 外力"
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                355,
+                189,
+                368
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "批语："
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                374,
+                132,
+                387
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "19.气敏电阻式传感器一般由敏感元件、 _和外壳三部分组成。"
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                392,
+                616,
+                406
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：3 分"
+                    }
+                ]
+            },
+            "bbox": [
+                105,
+                411,
+                213,
+                424
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案："
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                429,
+                157,
+                442
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "第一空： 加热器"
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                448,
+                203,
+                461
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "正确答案："
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                467,
+                157,
+                479
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "第一空： 加热器"
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                485,
+                203,
+                498
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "批语："
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                502,
+                132,
+                517
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "20.电感式传感器是基于 _原理工作的。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                521,
+                465,
+                535
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：3 分"
+                    }
+                ]
+            },
+            "bbox": [
+                105,
+                541,
+                213,
+                552
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案："
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                558,
+                157,
+                571
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "第一空： 电磁感应"
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                577,
+                218,
+                590
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "正确答案："
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                596,
+                157,
+                609
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "第一空： 电磁感应"
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                615,
+                218,
+                627
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "批语："
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                633,
+                132,
+                646
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "三.判断题(共10题,20分）"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                85,
+                668,
+                258,
+                682
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "21.敏感元件和转换元件是传感器的核心。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                694,
+                359,
+                707
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：2 分"
+                    }
+                ]
+            },
+            "bbox": [
+                105,
+                731,
+                213,
+                744
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案： "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { V }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "正确答案： "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { V }"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                749,
+                317,
+                763
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "22.超声波碰到杂质或分界面会产生显著反射形成反射回波。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                768,
+                480,
+                781
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：2分"
+                    }
+                ]
+            },
+            "bbox": [
+                105,
+                860,
+                213,
+                873
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案： "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { V }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "正确答案： "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { V }"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                879,
+                317,
+                892
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "23.物与物相连的互联网就是物联网。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                898,
+                329,
+                910
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：2 分"
+                    }
+                ]
+            },
+            "bbox": [
+                104,
+                114,
+                213,
+                127
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案： "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { V }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "正确答案： "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { V }"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                131,
+                319,
+                147
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "24.车联网是指车与车、车与道路设施、车与行人、车与传感设备等进行交互，实现车辆与公众网络通信的动态移动通信系统。"
+                    }
+                ]
+            },
+            "bbox": [
+                84,
+                151,
+                910,
+                166
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：2 分"
+                    }
+                ]
+            },
+            "bbox": [
+                104,
+                206,
+                213,
+                219
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案： "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { V }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "正确答案： "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { V }"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                225,
+                319,
+                240
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "25.传感器技术和自动识别技术完全相同。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                244,
+                359,
+                258
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：2 分"
+                    }
+                ]
+            },
+            "bbox": [
+                104,
+                300,
+                213,
+                313
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案： "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\times"
+                    },
+                    {
+                        "type": "text",
+                        "content": "正确答案： "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\times"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                318,
+                310,
+                332
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "26.智能医疗、智能物流、智能家居就是物联网的应用。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                337,
+                450,
+                350
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：2 分"
+                    }
+                ]
+            },
+            "bbox": [
+                104,
+                374,
+                213,
+                387
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案： "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { V }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "正确答案： "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { V }"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                392,
+                319,
+                406
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "27.智能交通、智能公交、无人驾驶不是应用了车联网。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                411,
+                450,
+                424
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：2 分"
+                    }
+                ]
+            },
+            "bbox": [
+                104,
+                448,
+                213,
+                461
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案： "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\times"
+                    },
+                    {
+                        "type": "text",
+                        "content": "正确答案： "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\times"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                466,
+                310,
+                480
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "28.反射式烟雾报警器可以利用光电式传感器的工作原理。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                485,
+                465,
+                498
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：2 分"
+                    }
+                ]
+            },
+            "bbox": [
+                104,
+                521,
+                213,
+                535
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案： "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { V }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "正确答案： "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { V }"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                539,
+                319,
+                554
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "29.传感器的基本特性主要分为静态特性和动态特性。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                558,
+                433,
+                573
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：2分"
+                    }
+                ]
+            },
+            "bbox": [
+                104,
+                596,
+                213,
+                609
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案： "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { V }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "正确答案： "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { V }"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                614,
+                317,
+                629
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "30.传感器一般由敏感元件、转换元件和测量转换电路等部分组成。 "
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                633,
+                524,
+                646
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：2 分"
+                    }
+                ]
+            },
+            "bbox": [
+                104,
+                670,
+                213,
+                684
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案： "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathcal { V }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "正确答案： √"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                688,
+                317,
+                703
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "四.多选题(共5题,20分）"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                85,
+                724,
+                253,
+                738
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "31.下面能发生压电效应的压电材料是( )。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                749,
+                369,
+                763
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：2分"
+                    }
+                ]
+            },
+            "bbox": [
+                104,
+                768,
+                213,
+                781
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "A、 石英晶体"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "B、压电陶瓷 "
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "C、高分子压电材料"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "D、 任何材料都可以"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                785,
+                226,
+                856
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案：AB正确答案：ABC"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                860,
+                332,
+                873
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "32.下面是电容式传感器的是（）。 学生得分：4分"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                879,
+                460,
+                892
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A、变面积式电容传感器"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                898,
+                255,
+                910
+            ]
+        }
+    ],
+    [
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "B、 变极距式电容传感器"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "C、 变介电常数式电容传感器"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "D、 应变式传感器"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                77,
+                287,
+                128
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案：ABC正确答案：ABC"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                131,
+                344,
+                146
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "33.下面是光电效应的是（ ）。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                151,
+                300,
+                165
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：4 分"
+                    }
+                ]
+            },
+            "bbox": [
+                104,
+                170,
+                213,
+                184
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "A、 内光电效应"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "B、 外光电效应"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "C、 热电效应"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                187,
+                196,
+                239
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "D、 光生伏特效应"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                262,
+                211,
+                275
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "ABD ABD "
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                280,
+                342,
+                294
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "34.热敏电阻式传感器最常用的两种材料是（ ）。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                300,
+                420,
+                313
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：4 分"
+                    }
+                ]
+            },
+            "bbox": [
+                104,
+                318,
+                213,
+                332
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "A、 铜"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "B、 铂"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "C、 铁"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "D、 铝"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                337,
+                136,
+                424
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案：AB正确答案：AB"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                429,
+                317,
+                443
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "35.传感器可以按照下面哪种分类（ ）。"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                448,
+                359,
+                461
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生得分：4 分"
+                    }
+                ]
+            },
+            "bbox": [
+                104,
+                467,
+                213,
+                480
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "A、 被测量"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "B、 工作原理"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "C、 能量的传递方式"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "D、 输出信号的性质"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                485,
+                226,
+                552
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "学生答案：ABCD正确答案：ABCD"
+                    }
+                ]
+            },
+            "bbox": [
+                85,
+                558,
+                369,
+                573
+            ]
+        }
+    ]
+]

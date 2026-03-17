@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>分数分布图 (2022-10-25)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #fff;
+    color: #1a1a1a;
+    padding: 16px;
+  }
+  h2 {
+    font-size: 15px;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 14px;
+    letter-spacing: 0.02em;
+  }
+  .chart-wrap {
+    position: relative;
+    width: 100%;
+    height: 380px;
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #666;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background: #1c1c1e; color: #e5e5e5; }
+    h2 { color: #aaa; }
+    .legend { color: #aaa; }
+  }
+</style>
+</head>
+<body>
+
+<h2>分数分布图 (2022-10-25)</h2>
+<div class="chart-wrap">
+  <canvas id="c"></canvas>
+</div>
+<div class="legend"><span class="legend-item"><span class="legend-dot" style="background:#D85A30"></span>不及格（&lt;60）</span><span class="legend-item"><span class="legend-dot" style="background:#BA7517"></span>及格（60–79）</span><span class="legend-item"><span class="legend-dot" style="background:#1D9E75"></span>优良（≥80）</span><span style="margin-left:auto;font-size:11px;color:#888">人数 5 &nbsp;|&nbsp; 均分 77.2 &nbsp;|&nbsp; 最高 84 &nbsp;|&nbsp; 最低 61</span></div>
+<script>
+new Chart(document.getElementById('c'), {
+  type: 'bar',
+  data: {
+    labels: ["0–9", "10–19", "20–29", "30–39", "40–49", "50–59", "60–69", "70–79", "80–89", "90–99", "90–100"],
+    datasets: [{
+      label: '人数',
+      data: [0, 0, 0, 0, 0, 0, 1, 1, 3, 0, 0],
+      backgroundColor: ["#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30", "#BA7517", "#BA7517", "#1D9E75", "#1D9E75", "#1D9E75"],
+      borderRadius: 4,
+      borderSkipped: false,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.raw} 人`
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { display: false },
+        ticks: { font: { size: 11 }, autoSkip: false, maxRotation: 30 },
+        title: { display: true, text: '分数段', font: { size: 12 } }
+      },
+      y: {
+        beginAtZero: true,
+        ticks: { stepSize: 1, font: { size: 11 } },
+        title: { display: true, text: '人数', font: { size: 12 } }
+      }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
