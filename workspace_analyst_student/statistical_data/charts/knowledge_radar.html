@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>知识点掌握情况雷达图</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #fff;
+    color: #1a1a1a;
+    padding: 16px;
+  }
+  h2 {
+    font-size: 15px;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 14px;
+    letter-spacing: 0.02em;
+  }
+  .chart-wrap {
+    position: relative;
+    width: 100%;
+    height: 380px;
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #666;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background: #1c1c1e; color: #e5e5e5; }
+    h2 { color: #aaa; }
+    .legend { color: #aaa; }
+  }
+</style>
+</head>
+<body>
+
+<h2>知识点掌握情况雷达图</h2>
+<div class="chart-wrap" style="height:380px;max-width:380px;margin:0 auto">
+  <canvas id="c"></canvas>
+</div>
+<div class="legend" style="justify-content:center">
+  <span class="legend-item"><span class="legend-dot" style="background:#3274c2;border-radius:50%"></span>掌握度（%）</span>
+</div>
+<script>
+new Chart(document.getElementById('c'), {
+  type: 'radar',
+  data: {
+    labels: ["热电阻", "光纤传感器", "热敏元件", "传感器概念", "力敏元件", "车联网技术", "物联网在智能家居上的应用", "传感器性能指标", "超声波传感器的应用", "热电偶", "光电器件", "力敏元件分类", "气敏元件分类", "气敏元件", "光纤传感器组成", "传感器组成", "超声波传感器工作原理", "物联网相关概念", "传感器分类"],
+    datasets: [{
+      label: '掌握度',
+      data: [0.0, 0.0, 0.0, 50.0, 80.0, 0.0, 0.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0],
+      backgroundColor: 'rgba(50,116,194,0.15)',
+      borderColor: '#3274c2',
+      pointBackgroundColor: '#3274c2',
+      pointRadius: 4,
+      borderWidth: 2,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.raw}%` } }
+    },
+    scales: {
+      r: {
+        min: 0, max: 100,
+        ticks: {
+          stepSize: 20,
+          font: { size: 10 },
+          callback: v => v + '%',
+          backdropColor: 'transparent'
+        },
+        pointLabels: { font: { size: 12 } },
+        grid: { color: 'rgba(0,0,0,0.08)' },
+        angleLines: { color: 'rgba(0,0,0,0.08)' }
+      }
+    }
+  }
+});
+</script>
+
+</body>
+</html>

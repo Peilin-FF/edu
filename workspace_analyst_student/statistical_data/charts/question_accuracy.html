@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>各题扣分情况</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #fff;
+    color: #1a1a1a;
+    padding: 16px;
+  }
+  h2 {
+    font-size: 15px;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 14px;
+    letter-spacing: 0.02em;
+  }
+  .chart-wrap {
+    position: relative;
+    width: 100%;
+    height: 380px;
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #666;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background: #1c1c1e; color: #e5e5e5; }
+    h2 { color: #aaa; }
+    .legend { color: #aaa; }
+  }
+</style>
+</head>
+<body>
+
+<h2>各题扣分情况</h2>
+<div class="chart-wrap" style="height:458px">
+  <canvas id="c"></canvas>
+</div>
+<div class="legend" style="margin-top:8px">
+  <span class="legend-item"><span class="legend-dot" style="background:#D85A30"></span>全部丢分（零分）</span>
+  <span class="legend-item"><span class="legend-dot" style="background:#BA7517"></span>丢失 ≥50% 分值</span>
+  <span class="legend-item"><span class="legend-dot" style="background:#1D9E75"></span>丢失 &lt;50% 分值</span>
+</div>
+<script>
+const kps        = ["热电阻", "光纤传感器", "热敏元件", "传感器概念", "力敏元件", "车联网技术", "传感器概念", "物联网在智能家居上的应用", "车联网技术"];
+const fullScores = [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0];
+new Chart(document.getElementById('c'), {
+  type: 'bar',
+  data: {
+    labels: ["034", "004", "013", "016", "018", "024", "025", "026", "027"],
+    datasets: [{
+      label: '丢分',
+      data: [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0],
+      backgroundColor: ["#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30"],
+      borderRadius: 4,
+      borderSkipped: false,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` 丢 ${ctx.raw} 分（满分 ${fullScores[ctx.dataIndex]}）`,
+          afterLabel: ctx => kps[ctx.dataIndex] ? `知识点：${kps[ctx.dataIndex]}` : ''
+        }
+      }
+    },
+    scales: {
+      x: {
+        beginAtZero: true,
+        ticks: { font: { size: 11 } },
+        title: { display: true, text: '丢分（分）', font: { size: 12 } }
+      },
+      y: {
+        ticks: { font: { size: 12 } },
+        grid: { display: false }
+      }
+    }
+  }
+});
+</script>
+
+</body>
+</html>

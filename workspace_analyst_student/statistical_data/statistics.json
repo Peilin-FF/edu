@@ -1,0 +1,759 @@
+{
+  "exam_date": "2022-10-25",
+  "generated_at": "2026-03-17T22:18:34",
+  "overall_performance": {
+    "student_id": "1840101020",
+    "exam_date": "2022-10-25",
+    "total_full_score": 100.0,
+    "total_score": 76.0,
+    "score_rate_pct": 76.0,
+    "deducted_points": 24.0,
+    "pass_threshold": 60.0,
+    "passed": true,
+    "general_performance": "良好"
+  },
+  "score_structure": {
+    "total_questions": 35,
+    "full_mark_count": 26,
+    "partial_mark_count": 0,
+    "zero_mark_count": 9,
+    "full_mark_rate_pct": 74.3,
+    "zero_mark_rate_pct": 25.7
+  },
+  "question_analysis": {
+    "all_questions": [
+      {
+        "question_id": "034",
+        "question_type": "多选题",
+        "knowledge_point": "热电阻",
+        "full_score": 4.0,
+        "actual_score": 0.0,
+        "deducted": 4.0,
+        "score_rate_pct": 0.0,
+        "status": "zero"
+      },
+      {
+        "question_id": "004",
+        "question_type": "单选题",
+        "knowledge_point": "光纤传感器",
+        "full_score": 3.0,
+        "actual_score": 0.0,
+        "deducted": 3.0,
+        "score_rate_pct": 0.0,
+        "status": "zero"
+      },
+      {
+        "question_id": "013",
+        "question_type": "单选题",
+        "knowledge_point": "热敏元件",
+        "full_score": 3.0,
+        "actual_score": 0.0,
+        "deducted": 3.0,
+        "score_rate_pct": 0.0,
+        "status": "zero"
+      },
+      {
+        "question_id": "016",
+        "question_type": "填空题",
+        "knowledge_point": "传感器概念",
+        "full_score": 3.0,
+        "actual_score": 0.0,
+        "deducted": 3.0,
+        "score_rate_pct": 0.0,
+        "status": "zero"
+      },
+      {
+        "question_id": "018",
+        "question_type": "填空题",
+        "knowledge_point": "力敏元件",
+        "full_score": 3.0,
+        "actual_score": 0.0,
+        "deducted": 3.0,
+        "score_rate_pct": 0.0,
+        "status": "zero"
+      },
+      {
+        "question_id": "024",
+        "question_type": "判断题",
+        "knowledge_point": "车联网技术",
+        "full_score": 2.0,
+        "actual_score": 0.0,
+        "deducted": 2.0,
+        "score_rate_pct": 0.0,
+        "status": "zero"
+      },
+      {
+        "question_id": "025",
+        "question_type": "判断题",
+        "knowledge_point": "传感器概念",
+        "full_score": 2.0,
+        "actual_score": 0.0,
+        "deducted": 2.0,
+        "score_rate_pct": 0.0,
+        "status": "zero"
+      },
+      {
+        "question_id": "026",
+        "question_type": "判断题",
+        "knowledge_point": "物联网在智能家居上的应用",
+        "full_score": 2.0,
+        "actual_score": 0.0,
+        "deducted": 2.0,
+        "score_rate_pct": 0.0,
+        "status": "zero"
+      },
+      {
+        "question_id": "027",
+        "question_type": "判断题",
+        "knowledge_point": "车联网技术",
+        "full_score": 2.0,
+        "actual_score": 0.0,
+        "deducted": 2.0,
+        "score_rate_pct": 0.0,
+        "status": "zero"
+      },
+      {
+        "question_id": "001",
+        "question_type": "单选题",
+        "knowledge_point": "传感器性能指标",
+        "full_score": 3.0,
+        "actual_score": 3.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "002",
+        "question_type": "单选题",
+        "knowledge_point": "传感器概念",
+        "full_score": 3.0,
+        "actual_score": 3.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "003",
+        "question_type": "单选题",
+        "knowledge_point": "超声波传感器的应用",
+        "full_score": 3.0,
+        "actual_score": 3.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "005",
+        "question_type": "单选题",
+        "knowledge_point": "力敏元件",
+        "full_score": 3.0,
+        "actual_score": 3.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "006",
+        "question_type": "单选题",
+        "knowledge_point": "热电偶",
+        "full_score": 3.0,
+        "actual_score": 3.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "007",
+        "question_type": "单选题",
+        "knowledge_point": "光电器件",
+        "full_score": 3.0,
+        "actual_score": 3.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "008",
+        "question_type": "单选题",
+        "knowledge_point": "力敏元件分类",
+        "full_score": 3.0,
+        "actual_score": 3.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "009",
+        "question_type": "单选题",
+        "knowledge_point": "气敏元件分类",
+        "full_score": 3.0,
+        "actual_score": 3.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "010",
+        "question_type": "单选题",
+        "knowledge_point": "气敏元件",
+        "full_score": 3.0,
+        "actual_score": 3.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "011",
+        "question_type": "单选题",
+        "knowledge_point": "力敏元件",
+        "full_score": 3.0,
+        "actual_score": 3.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "012",
+        "question_type": "单选题",
+        "knowledge_point": "光纤传感器组成",
+        "full_score": 3.0,
+        "actual_score": 3.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "014",
+        "question_type": "单选题",
+        "knowledge_point": "力敏元件",
+        "full_score": 3.0,
+        "actual_score": 3.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "015",
+        "question_type": "单选题",
+        "knowledge_point": "光电器件",
+        "full_score": 3.0,
+        "actual_score": 3.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "017",
+        "question_type": "填空题",
+        "knowledge_point": "传感器组成",
+        "full_score": 3.0,
+        "actual_score": 3.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "019",
+        "question_type": "填空题",
+        "knowledge_point": "气敏元件",
+        "full_score": 3.0,
+        "actual_score": 3.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "020",
+        "question_type": "填空题",
+        "knowledge_point": "力敏元件",
+        "full_score": 3.0,
+        "actual_score": 3.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "021",
+        "question_type": "判断题",
+        "knowledge_point": "传感器组成",
+        "full_score": 2.0,
+        "actual_score": 2.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "022",
+        "question_type": "判断题",
+        "knowledge_point": "超声波传感器工作原理",
+        "full_score": 2.0,
+        "actual_score": 2.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "023",
+        "question_type": "判断题",
+        "knowledge_point": "物联网相关概念",
+        "full_score": 2.0,
+        "actual_score": 2.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "028",
+        "question_type": "判断题",
+        "knowledge_point": "光电器件",
+        "full_score": 2.0,
+        "actual_score": 2.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "029",
+        "question_type": "判断题",
+        "knowledge_point": "传感器性能指标",
+        "full_score": 2.0,
+        "actual_score": 2.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "030",
+        "question_type": "判断题",
+        "knowledge_point": "传感器组成",
+        "full_score": 2.0,
+        "actual_score": 2.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "031",
+        "question_type": "多选题",
+        "knowledge_point": "力敏元件",
+        "full_score": 4.0,
+        "actual_score": 4.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "032",
+        "question_type": "多选题",
+        "knowledge_point": "传感器分类",
+        "full_score": 4.0,
+        "actual_score": 4.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "033",
+        "question_type": "多选题",
+        "knowledge_point": "光电器件",
+        "full_score": 4.0,
+        "actual_score": 4.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      },
+      {
+        "question_id": "035",
+        "question_type": "多选题",
+        "knowledge_point": "传感器分类",
+        "full_score": 4.0,
+        "actual_score": 4.0,
+        "deducted": 0.0,
+        "score_rate_pct": 100.0,
+        "status": "full"
+      }
+    ],
+    "deducted_questions": [
+      {
+        "question_id": "034",
+        "question_type": "多选题",
+        "knowledge_point": "热电阻",
+        "full_score": 4.0,
+        "actual_score": 0.0,
+        "deducted": 4.0,
+        "score_rate_pct": 0.0,
+        "status": "zero"
+      },
+      {
+        "question_id": "004",
+        "question_type": "单选题",
+        "knowledge_point": "光纤传感器",
+        "full_score": 3.0,
+        "actual_score": 0.0,
+        "deducted": 3.0,
+        "score_rate_pct": 0.0,
+        "status": "zero"
+      },
+      {
+        "question_id": "013",
+        "question_type": "单选题",
+        "knowledge_point": "热敏元件",
+        "full_score": 3.0,
+        "actual_score": 0.0,
+        "deducted": 3.0,
+        "score_rate_pct": 0.0,
+        "status": "zero"
+      },
+      {
+        "question_id": "016",
+        "question_type": "填空题",
+        "knowledge_point": "传感器概念",
+        "full_score": 3.0,
+        "actual_score": 0.0,
+        "deducted": 3.0,
+        "score_rate_pct": 0.0,
+        "status": "zero"
+      },
+      {
+        "question_id": "018",
+        "question_type": "填空题",
+        "knowledge_point": "力敏元件",
+        "full_score": 3.0,
+        "actual_score": 0.0,
+        "deducted": 3.0,
+        "score_rate_pct": 0.0,
+        "status": "zero"
+      },
+      {
+        "question_id": "024",
+        "question_type": "判断题",
+        "knowledge_point": "车联网技术",
+        "full_score": 2.0,
+        "actual_score": 0.0,
+        "deducted": 2.0,
+        "score_rate_pct": 0.0,
+        "status": "zero"
+      },
+      {
+        "question_id": "025",
+        "question_type": "判断题",
+        "knowledge_point": "传感器概念",
+        "full_score": 2.0,
+        "actual_score": 0.0,
+        "deducted": 2.0,
+        "score_rate_pct": 0.0,
+        "status": "zero"
+      },
+      {
+        "question_id": "026",
+        "question_type": "判断题",
+        "knowledge_point": "物联网在智能家居上的应用",
+        "full_score": 2.0,
+        "actual_score": 0.0,
+        "deducted": 2.0,
+        "score_rate_pct": 0.0,
+        "status": "zero"
+      },
+      {
+        "question_id": "027",
+        "question_type": "判断题",
+        "knowledge_point": "车联网技术",
+        "full_score": 2.0,
+        "actual_score": 0.0,
+        "deducted": 2.0,
+        "score_rate_pct": 0.0,
+        "status": "zero"
+      }
+    ]
+  },
+  "knowledge_point_analysis": [
+    {
+      "knowledge_point": "热电阻",
+      "question_ids": [
+        "034"
+      ],
+      "question_count": 1,
+      "total_full_score": 4.0,
+      "total_actual_score": 0.0,
+      "mastery_rate_pct": 0.0,
+      "mastery_level": "❗ 需要重点加强",
+      "has_zero_mark": true
+    },
+    {
+      "knowledge_point": "光纤传感器",
+      "question_ids": [
+        "004"
+      ],
+      "question_count": 1,
+      "total_full_score": 3.0,
+      "total_actual_score": 0.0,
+      "mastery_rate_pct": 0.0,
+      "mastery_level": "❗ 需要重点加强",
+      "has_zero_mark": true
+    },
+    {
+      "knowledge_point": "热敏元件",
+      "question_ids": [
+        "013"
+      ],
+      "question_count": 1,
+      "total_full_score": 3.0,
+      "total_actual_score": 0.0,
+      "mastery_rate_pct": 0.0,
+      "mastery_level": "❗ 需要重点加强",
+      "has_zero_mark": true
+    },
+    {
+      "knowledge_point": "车联网技术",
+      "question_ids": [
+        "024",
+        "027"
+      ],
+      "question_count": 2,
+      "total_full_score": 4.0,
+      "total_actual_score": 0.0,
+      "mastery_rate_pct": 0.0,
+      "mastery_level": "❗ 需要重点加强",
+      "has_zero_mark": true
+    },
+    {
+      "knowledge_point": "物联网在智能家居上的应用",
+      "question_ids": [
+        "026"
+      ],
+      "question_count": 1,
+      "total_full_score": 2.0,
+      "total_actual_score": 0.0,
+      "mastery_rate_pct": 0.0,
+      "mastery_level": "❗ 需要重点加强",
+      "has_zero_mark": true
+    },
+    {
+      "knowledge_point": "传感器概念",
+      "question_ids": [
+        "016",
+        "025",
+        "002"
+      ],
+      "question_count": 3,
+      "total_full_score": 8.0,
+      "total_actual_score": 3.0,
+      "mastery_rate_pct": 37.5,
+      "mastery_level": "❗ 需要重点加强",
+      "has_zero_mark": true
+    },
+    {
+      "knowledge_point": "力敏元件",
+      "question_ids": [
+        "018",
+        "005",
+        "011",
+        "014",
+        "020",
+        "031"
+      ],
+      "question_count": 6,
+      "total_full_score": 19.0,
+      "total_actual_score": 16.0,
+      "mastery_rate_pct": 84.2,
+      "mastery_level": "✅ 掌握良好",
+      "has_zero_mark": true
+    },
+    {
+      "knowledge_point": "传感器性能指标",
+      "question_ids": [
+        "001",
+        "029"
+      ],
+      "question_count": 2,
+      "total_full_score": 5.0,
+      "total_actual_score": 5.0,
+      "mastery_rate_pct": 100.0,
+      "mastery_level": "✅ 掌握良好",
+      "has_zero_mark": false
+    },
+    {
+      "knowledge_point": "超声波传感器的应用",
+      "question_ids": [
+        "003"
+      ],
+      "question_count": 1,
+      "total_full_score": 3.0,
+      "total_actual_score": 3.0,
+      "mastery_rate_pct": 100.0,
+      "mastery_level": "✅ 掌握良好",
+      "has_zero_mark": false
+    },
+    {
+      "knowledge_point": "热电偶",
+      "question_ids": [
+        "006"
+      ],
+      "question_count": 1,
+      "total_full_score": 3.0,
+      "total_actual_score": 3.0,
+      "mastery_rate_pct": 100.0,
+      "mastery_level": "✅ 掌握良好",
+      "has_zero_mark": false
+    },
+    {
+      "knowledge_point": "光电器件",
+      "question_ids": [
+        "007",
+        "015",
+        "028",
+        "033"
+      ],
+      "question_count": 4,
+      "total_full_score": 12.0,
+      "total_actual_score": 12.0,
+      "mastery_rate_pct": 100.0,
+      "mastery_level": "✅ 掌握良好",
+      "has_zero_mark": false
+    },
+    {
+      "knowledge_point": "力敏元件分类",
+      "question_ids": [
+        "008"
+      ],
+      "question_count": 1,
+      "total_full_score": 3.0,
+      "total_actual_score": 3.0,
+      "mastery_rate_pct": 100.0,
+      "mastery_level": "✅ 掌握良好",
+      "has_zero_mark": false
+    },
+    {
+      "knowledge_point": "气敏元件分类",
+      "question_ids": [
+        "009"
+      ],
+      "question_count": 1,
+      "total_full_score": 3.0,
+      "total_actual_score": 3.0,
+      "mastery_rate_pct": 100.0,
+      "mastery_level": "✅ 掌握良好",
+      "has_zero_mark": false
+    },
+    {
+      "knowledge_point": "气敏元件",
+      "question_ids": [
+        "010",
+        "019"
+      ],
+      "question_count": 2,
+      "total_full_score": 6.0,
+      "total_actual_score": 6.0,
+      "mastery_rate_pct": 100.0,
+      "mastery_level": "✅ 掌握良好",
+      "has_zero_mark": false
+    },
+    {
+      "knowledge_point": "光纤传感器组成",
+      "question_ids": [
+        "012"
+      ],
+      "question_count": 1,
+      "total_full_score": 3.0,
+      "total_actual_score": 3.0,
+      "mastery_rate_pct": 100.0,
+      "mastery_level": "✅ 掌握良好",
+      "has_zero_mark": false
+    },
+    {
+      "knowledge_point": "传感器组成",
+      "question_ids": [
+        "017",
+        "021",
+        "030"
+      ],
+      "question_count": 3,
+      "total_full_score": 7.0,
+      "total_actual_score": 7.0,
+      "mastery_rate_pct": 100.0,
+      "mastery_level": "✅ 掌握良好",
+      "has_zero_mark": false
+    },
+    {
+      "knowledge_point": "超声波传感器工作原理",
+      "question_ids": [
+        "022"
+      ],
+      "question_count": 1,
+      "total_full_score": 2.0,
+      "total_actual_score": 2.0,
+      "mastery_rate_pct": 100.0,
+      "mastery_level": "✅ 掌握良好",
+      "has_zero_mark": false
+    },
+    {
+      "knowledge_point": "物联网相关概念",
+      "question_ids": [
+        "023"
+      ],
+      "question_count": 1,
+      "total_full_score": 2.0,
+      "total_actual_score": 2.0,
+      "mastery_rate_pct": 100.0,
+      "mastery_level": "✅ 掌握良好",
+      "has_zero_mark": false
+    },
+    {
+      "knowledge_point": "传感器分类",
+      "question_ids": [
+        "032",
+        "035"
+      ],
+      "question_count": 2,
+      "total_full_score": 8.0,
+      "total_actual_score": 8.0,
+      "mastery_rate_pct": 100.0,
+      "mastery_level": "✅ 掌握良好",
+      "has_zero_mark": false
+    }
+  ],
+  "trend_analysis": {
+    "overall_learning_summary": "本次得分 76.0 / 100.0，得分率 76.0%，整体表现：良好。共 9 题零分，集中于知识点：热电阻、光纤传感器、力敏元件。",
+    "structural_weaknesses": [
+      {
+        "knowledge_point": "热电阻",
+        "mastery_rate_pct": 0.0,
+        "has_zero_mark": true,
+        "severity": "critical"
+      },
+      {
+        "knowledge_point": "光纤传感器",
+        "mastery_rate_pct": 0.0,
+        "has_zero_mark": true,
+        "severity": "critical"
+      },
+      {
+        "knowledge_point": "热敏元件",
+        "mastery_rate_pct": 0.0,
+        "has_zero_mark": true,
+        "severity": "critical"
+      },
+      {
+        "knowledge_point": "车联网技术",
+        "mastery_rate_pct": 0.0,
+        "has_zero_mark": true,
+        "severity": "critical"
+      },
+      {
+        "knowledge_point": "物联网在智能家居上的应用",
+        "mastery_rate_pct": 0.0,
+        "has_zero_mark": true,
+        "severity": "critical"
+      },
+      {
+        "knowledge_point": "传感器概念",
+        "mastery_rate_pct": 37.5,
+        "has_zero_mark": true,
+        "severity": "critical"
+      }
+    ],
+    "deducted_questions_count": 9,
+    "weak_knowledge_points_count": 6,
+    "moderate_knowledge_points_count": 0
+  }
+}

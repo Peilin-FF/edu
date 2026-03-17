@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>各题得分率</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #fff;
+    color: #1a1a1a;
+    padding: 16px;
+  }
+  h2 {
+    font-size: 15px;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 14px;
+    letter-spacing: 0.02em;
+  }
+  .chart-wrap {
+    position: relative;
+    width: 100%;
+    height: 380px;
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #666;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background: #1c1c1e; color: #e5e5e5; }
+    h2 { color: #aaa; }
+    .legend { color: #aaa; }
+  }
+</style>
+</head>
+<body>
+
+<h2>各题得分率</h2>
+<div class="chart-wrap">
+  <canvas id="c"></canvas>
+</div>
+<div class="legend"><span class="legend-item"><span class="legend-dot" style="background:#1D9E75"></span>满分（26 题）</span><span class="legend-item"><span class="legend-dot" style="background:#BA7517"></span>部分得分（0 题）</span><span class="legend-item"><span class="legend-dot" style="background:#D85A30"></span>零分（9 题）</span><span style="margin-left:auto;font-size:11px;color:#888">共 35 题</span></div>
+<script>
+const kps = ["热电阻", "光纤传感器", "热敏元件", "传感器概念", "力敏元件", "车联网技术", "传感器概念", "物联网在智能家居上的应用", "车联网技术", "传感器性能指标", "传感器概念", "超声波传感器的应用", "力敏元件", "热电偶", "光电器件", "力敏元件分类", "气敏元件分类", "气敏元件", "力敏元件", "光纤传感器组成", "力敏元件", "光电器件", "传感器组成", "气敏元件", "力敏元件", "传感器组成", "超声波传感器工作原理", "物联网相关概念", "光电器件", "传感器性能指标", "传感器组成", "力敏元件", "传感器分类", "光电器件", "传感器分类"];
+new Chart(document.getElementById('c'), {
+  type: 'bar',
+  data: {
+    labels: ["034", "004", "013", "016", "018", "024", "025", "026", "027", "001", "002", "003", "005", "006", "007", "008", "009", "010", "011", "012", "014", "015", "017", "019", "020", "021", "022", "023", "028", "029", "030", "031", "032", "033", "035"],
+    datasets: [{
+      label: '得分率',
+      data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0],
+      backgroundColor: ["#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30", "#D85A30", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75", "#1D9E75"],
+      borderRadius: 4,
+      borderSkipped: false,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.raw}%`,
+          afterLabel: ctx => kps[ctx.dataIndex] ? `知识点：${kps[ctx.dataIndex]}` : ''
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { display: false },
+        ticks: { font: { size: 11 }, autoSkip: false, maxRotation: 30 },
+        title: { display: true, text: '题目', font: { size: 12 } }
+      },
+      y: {
+        min: 0, max: 100,
+        ticks: { font: { size: 11 }, callback: v => v + '%' },
+        title: { display: true, text: '得分率（%）', font: { size: 12 } }
+      }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
