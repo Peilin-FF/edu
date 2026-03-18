@@ -5,7 +5,7 @@ export async function generatePptSlides(question) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: 'gpt-5.2',
+      model: 'gemini-3-flash-preview',
       messages: [
         { role: 'system', content: buildSystemPrompt() },
         { role: 'user', content: buildUserPrompt(question) },

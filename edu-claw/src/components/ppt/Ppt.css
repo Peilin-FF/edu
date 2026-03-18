@@ -180,6 +180,32 @@
 .ppt-ctrl-download { background: #5470c6; border-color: #5470c6; }
 .ppt-ctrl-download:hover { background: #4060b6; }
 .ppt-ctrl-page { color: rgba(255,255,255,0.7); font-size: 13px; min-width: 60px; text-align: center; }
+.ppt-ctrl-sep {
+  width: 1px; height: 20px; background: rgba(255,255,255,0.15); margin: 0 4px;
+}
+.ppt-ctrl-voice { background: #3ba272; border-color: #3ba272; }
+.ppt-ctrl-voice:hover { background: #2d8a5e; }
+.ppt-ctrl-voice--active { background: #e67e22; border-color: #e67e22; animation: pptPulse 1.5s ease infinite; }
+.ppt-ctrl-voice--loading { background: #7f8c8d; border-color: #7f8c8d; cursor: wait; }
+.ppt-ctrl-auto--on { background: rgba(59,162,114,0.3); border-color: #3ba272; }
+@keyframes pptPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* ===== Narration Bar ===== */
+.ppt-narration {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 24px; max-height: 80px; overflow-y: auto;
+  background: rgba(255,255,255,0.03);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.ppt-narration-icon { font-size: 18px; flex-shrink: 0; line-height: 1.4; }
+.ppt-narration-icon.speaking { animation: pptPulse 1s ease infinite; }
+.ppt-narration-text {
+  margin: 0; font-size: 13px; color: rgba(255,255,255,0.65);
+  line-height: 1.6;
+}
 
 /* ===== PPT Button in Wrong Card ===== */
 .ppt-btn {
