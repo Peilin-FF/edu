@@ -1,6 +1,6 @@
 # EduClaw - 个性化学习分析平台
 
-基于知识图谱的课堂学习诊断系统，支持学生端个性化知识掌握追踪和教师端班级整体分析。
+基于知识图谱的课堂学习诊断系统，支持学生端个性化知识掌握追踪和教师端班级整体分析。包含班级分析 Agent（`workspace_analyst_class`）和个人学习诊断 Agent（`workspace_analyst_student`）两套分析后端。
 
 ## 项目结构
 
@@ -30,13 +30,27 @@ edu/
 │   └── scripts/
 │       └── parse_excel.py             # 知识点 Excel → knowledge.json
 │
-├── workspace_analyst_class/           # 数据处理后端（Python 脚本）
+├── workspace_analyst_class/           # 班级分析 Agent 后端（Python 脚本）
 │   ├── scripts/
 │   │   ├── parse_student_md.py        #   MinerU 解析结果 → 学生 JSON
 │   │   └── enrich_and_merge.py        #   LLM 标注知识点 + 生成双端 JSON
 │   ├── student_grader_output/         #   学生端 JSON 输出
 │   ├── grader_output/                 #   教师端 JSON 输出
-│   └── skills/                        #   分析技能脚本
+│   └── skills/                        #   分析技能脚本（class_statistics / chart_generator / class_report_generator）
+│
+├── workspace_analyst_student/         # 个人诊断 Agent 后端（Python 脚本）
+│   ├── grader_output/
+│   │   └── content.json               #   当前学生批改结果（输入）
+│   ├── statistical_data/              #   统计输出
+│   │   ├── statistics.json            #     个人统计结果
+│   │   └── charts/                    #     图表 HTML（score_breakdown / question_accuracy / knowledge_radar / score_trend）
+│   ├── memory/                        #   历史报告与日志
+│   │   ├── {stuID}_report_*.html      #     个人诊断报告
+│   │   └── YYYY-MM-DD.md             #     每日日志
+│   ├── SOUL.md                        #   Agent 身份定义
+│   ├── AGENTS.md                      #   工作流定义
+│   ├── MEMORY.md                      #   长期学习记录
+│   └── skills/                        #   分析技能脚本（individual_statistics / chart_generator / individual_report_generator）
 │
 ├── 物联网技术及应用-课程知识点-2.xlsx    # 课程知识点大纲（数据源）
 ├── *.pdf                               # 待处理的学生试卷 PDF
@@ -134,6 +148,16 @@ LLM 会自动：
 - 生成专业的扣分原因分析（非简单"选错了"）
 - 输出学生端 JSON 和教师端 JSON
 
+生成的 `grader_output/content.json` 也可直接作为个人诊断 Agent 的输入，触发个人报告生成流程（见下）。
+
+#### 个人诊断 Agent（workspace_analyst_student）
+
+将目标学生的批改结果放入 `workspace_analyst_student/grader_output/content.json` 后，Agent 会自动运行完整 Pipeline：
+
+- **individual_statistics**：逐题计算得分率、丢分、题目状态（满分/部分/零分），按知识点聚合掌握度，标记知识盲区（`has_zero_mark`）
+- **chart_generator**：生成逐题得分率图、丢分图、知识点雷达图、历史得分率趋势图
+- **individual_report_generator**：结合 `memory/` 中的历史报告进行趋势对比，输出个人学习诊断报告至 `memory/{stuID}_report_<日期>.html`
+
 ### Step 3: 更新前端数据
 
 ```bash
@@ -172,6 +196,7 @@ python scripts/parse_excel.py
 - 自动展开含错题的分支，快速定位薄弱点
 - 点击薄弱节点弹出错题详情（题目、选项、答案对比、AI 扣分原因分析）
 - "只看未掌握"模式过滤已完全掌握的知识点
+- **个人诊断报告**：由 `workspace_analyst_student` Agent 生成，包含逐题得分诊断、知识点掌握评估（区分知识盲区与理解薄弱）、历史趋势对比及个性化学习建议
 
 ### 教师端
 - **知识图谱视图**：班级整体掌握度热力图，节点大小编码掌握度

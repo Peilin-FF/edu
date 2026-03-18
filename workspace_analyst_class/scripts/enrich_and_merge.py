@@ -21,9 +21,13 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 WORKSPACE_DIR = os.path.join(SCRIPT_DIR, '..')
 XLSX_PATH = os.path.join(WORKSPACE_DIR, '..', '物联网技术及应用-课程知识点-2.xlsx')
 
-API_URL = 'https://api-gateway.glm.ai/v1/chat/completions'
-API_KEY = 'sk-2srhBUrGycFLstk3bzP3CjxiTN9MFmFm'
-MODEL = 'gpt-5.2'
+# API_URL = 'https://api-gateway.glm.ai/v1/chat/completions'
+# API_KEY = 'sk-2srhBUrGycFLstk3bzP3CjxiTN9MFmFm'
+# MODEL = 'gpt-5.2'
+
+API_URL = 'https://api.deepseek.com/v1'
+API_KEY = 'sk-9e44c813d6dc4024ab0ae91b8255ed47'
+MODEL = 'deepseek-chat'
 
 
 # ============ 加载知识点 ============

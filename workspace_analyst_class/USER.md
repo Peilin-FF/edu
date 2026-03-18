@@ -8,6 +8,10 @@ _Learn about the person you're helping. Update this as you go._
 - **Timezone:**
 - **Notes:**
 
+- **FEISHU_APP_ID:**
+- **FEISHU_APP_SECRET:**
+- **open_id:**
+
 ## Context
 
 _(What do they care about? What projects are they working on? What annoys them? What makes them laugh? Build this over time.)_
