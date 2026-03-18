@@ -1,4 +1,4 @@
-export default function WeakPointDrawer({ node, onClose }) {
+export default function WeakPointDrawer({ node, onClose, onPptRequest }) {
   const pct = Math.round(node.mastery * 100);
 
   return (
@@ -41,6 +41,11 @@ export default function WeakPointDrawer({ node, onClose }) {
               </div>
               {q['扣分原因'] && q['扣分原因'] !== '无' && (
                 <div className="q-reason">{q['扣分原因']}</div>
+              )}
+              {onPptRequest && (
+                <button className="ppt-btn" onClick={() => onPptRequest(q)}>
+                  查看 PPT 讲解
+                </button>
               )}
             </div>
           ))}

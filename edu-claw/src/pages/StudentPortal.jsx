@@ -4,6 +4,7 @@ import MindMap from '../components/MindMap';
 import StudentSelector from '../components/StudentSelector';
 import WeakPointDrawer from '../components/WeakPointDrawer';
 import MasteryLegend from '../components/MasteryLegend';
+import PptModal from '../components/ppt/PptModal';
 import { collectNodeNames, computeStudentMastery } from '../utils/masteryCalculator';
 
 export default function StudentPortal() {
@@ -12,6 +13,7 @@ export default function StudentPortal() {
   const [masteryMap, setMasteryMap] = useState(null);
   const [selectedNode, setSelectedNode] = useState(null);
   const [weakOnly, setWeakOnly] = useState(false);
+  const [pptQuestion, setPptQuestion] = useState(null);
 
   useEffect(() => {
     fetch('/data/knowledge.json').then(r => r.json()).then(setTree);
@@ -94,6 +96,14 @@ export default function StudentPortal() {
         <WeakPointDrawer
           node={selectedNode}
           onClose={() => setSelectedNode(null)}
+          onPptRequest={(q) => setPptQuestion(q)}
+        />
+      )}
+
+      {pptQuestion && (
+        <PptModal
+          question={pptQuestion}
+          onClose={() => setPptQuestion(null)}
         />
       )}
     </div>
