@@ -21,7 +21,7 @@
 
 ### 项目教程和说明
 
-[turorial.mov](turorial.mov) — 完整的项目演示视频，包含功能介绍和操作说明。
+https://github.com/Peilin-FF/edu/raw/main/tutorial.mp4
 
 ---
 
