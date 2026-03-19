@@ -1,5 +1,6 @@
 import { buildSystemPrompt, buildUserPrompt } from './pptPrompt';
 import { buildPracticeSystemPrompt, buildPracticeUserPrompt } from './practicePrompt';
+import { buildSuitabilityPrompt, buildInteractiveHtmlPrompt } from './interactivePrompt';
 
 export async function generatePptSlides(question) {
   const res = await fetch('/api/chat', {
@@ -113,4 +114,60 @@ export async function streamChat(messages, onChunk, signal) {
       } catch { /* skip malformed chunks */ }
     }
   }
+}
+
+/** Check if a question is suitable for interactive simulation */
+export async function checkInteractiveSuitability(question) {
+  const { system, user } = buildSuitabilityPrompt(question);
+  const res = await fetch('/api/chat', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: 'gemini-3-flash-preview',
+      messages: [
+        { role: 'system', content: system },
+        { role: 'user', content: user },
+      ],
+      temperature: 0.2,
+      response_format: { type: 'json_object' },
+    }),
+  });
+
+  if (!res.ok) throw new Error(`LLM 请求失败 (${res.status})`);
+  const data = await res.json();
+  const content = data.choices?.[0]?.message?.content;
+  if (!content) throw new Error('LLM 返回为空');
+  return JSON.parse(content);
+}
+
+/** Generate interactive HTML simulation for a wrong question */
+export async function generateInteractiveHtml(question, simulationIdea) {
+  const { system, user } = buildInteractiveHtmlPrompt(question, simulationIdea);
+  const res = await fetch('/api/chat', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: 'gemini-3-flash-preview',
+      messages: [
+        { role: 'system', content: system },
+        { role: 'user', content: user },
+      ],
+      temperature: 0.7,
+      max_tokens: 8192,
+    }),
+  });
+
+  if (!res.ok) throw new Error(`LLM 请求失败 (${res.status})`);
+  const data = await res.json();
+  let content = data.choices?.[0]?.message?.content;
+  if (!content) throw new Error('LLM 返回为空');
+
+  // Strip markdown code fences if present
+  content = content.replace(/^```html?\s*\n?/i, '').replace(/\n?```\s*$/i, '').trim();
+
+  if (!content.includes('<html') && !content.includes('<!DOCTYPE')) {
+    throw new Error('生成的内容不是有效的 HTML');
+  }
+
+  return content;
 }

@@ -1,4 +1,4 @@
-export default function WeakPointDrawer({ node, onClose, onPptRequest, onPracticeRequest }) {
+export default function WeakPointDrawer({ node, onClose, onPptRequest, onPracticeRequest, onInteractiveRequest }) {
   const pct = Math.round(node.mastery * 100);
 
   return (
@@ -54,6 +54,11 @@ export default function WeakPointDrawer({ node, onClose, onPptRequest, onPractic
                   </button>
                 )}
               </div>
+              {onInteractiveRequest && (
+                <button className="interactive-btn" onClick={() => onInteractiveRequest(q)}>
+                  &#x1F52C; 互动模拟实验
+                </button>
+              )}
             </div>
           ))}
         </div>

@@ -9,6 +9,7 @@ import PracticeModal from '../components/practice/PracticeModal';
 import ChatBubble from '../components/chat/ChatBubble';
 import ProgressPanel from '../components/progress/ProgressPanel';
 import AchievementToast from '../components/progress/AchievementToast';
+import InteractiveModal from '../components/interactive/InteractiveModal';
 import { recordPptView, recordChat, getProgress } from '../utils/progressStore';
 import { collectNodeNames, computeStudentMastery } from '../utils/masteryCalculator';
 
@@ -20,6 +21,7 @@ export default function StudentPortal() {
   const [weakOnly, setWeakOnly] = useState(false);
   const [pptQuestion, setPptQuestion] = useState(null);
   const [practiceQuestion, setPracticeQuestion] = useState(null);
+  const [interactiveQuestion, setInteractiveQuestion] = useState(null);
   const [showProgress, setShowProgress] = useState(false);
   const [toastQueue, setToastQueue] = useState([]);
 
@@ -137,6 +139,7 @@ export default function StudentPortal() {
           onClose={() => setSelectedNode(null)}
           onPptRequest={handlePptRequest}
           onPracticeRequest={(q) => setPracticeQuestion(q)}
+          onInteractiveRequest={(q) => setInteractiveQuestion(q)}
         />
       )}
 
@@ -153,6 +156,13 @@ export default function StudentPortal() {
           studentId={studentId}
           onClose={() => setPracticeQuestion(null)}
           onNewAchievements={handleNewAchievements}
+        />
+      )}
+
+      {interactiveQuestion && (
+        <InteractiveModal
+          question={interactiveQuestion}
+          onClose={() => setInteractiveQuestion(null)}
         />
       )}
 
