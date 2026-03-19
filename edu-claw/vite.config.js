@@ -13,6 +13,8 @@ export default defineConfig(({ mode }) => {
       mineruPlugin(env),
     ],
     server: {
+      allowedHosts: true,
+      host: true,
       proxy: {
         '/api/chat': {
           target: 'https://api-gateway.glm.ai',
