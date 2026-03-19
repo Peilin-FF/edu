@@ -19,9 +19,9 @@
 
 登录后选择课程「传感器原理与应用」进入学习。
 
-### 项目教程和说明
+<!-- ### 项目教程和说明
 
-https://github.com/Peilin-FF/edu/raw/main/tutorial.mp4
+https://github.com/Peilin-FF/edu/raw/main/tutorial.mp4 -->
 
 ---
 
