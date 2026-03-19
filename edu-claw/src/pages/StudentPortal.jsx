@@ -11,7 +11,7 @@ import AchievementToast from '../components/progress/AchievementToast';
 import InteractiveModal from '../components/interactive/InteractiveModal';
 import SyncStatus from '../components/SyncStatus';
 import { recordPptView, getProgress, pullFromGithub } from '../utils/progressStore';
-import { isGithubConnected, saveFullContext } from '../utils/githubStore';
+import { isGithubConnected, saveFullContext, saveGithubConfig } from '../utils/githubStore';
 import { getCurrentAccount, logout } from '../utils/accountStore';
 import { collectNodeNames, computeStudentMastery } from '../utils/masteryCalculator';
 
@@ -29,12 +29,19 @@ export default function StudentPortal() {
   const [toastQueue, setToastQueue] = useState([]);
   const [syncing, setSyncing] = useState(false);
 
-  // Check login & load data
+  // Check login, restore GitHub, load data
   useEffect(() => {
     const account = getCurrentAccount();
     if (!account) {
       navigate('/login');
       return;
+    }
+
+    // Restore GitHub config from account binding
+    const accounts = JSON.parse(localStorage.getItem('edu_accounts') || '{}');
+    const github = accounts[account.studentId]?.github;
+    if (github) {
+      saveGithubConfig(github.token, github.username, github.avatar);
     }
 
     // Load knowledge tree + student data in parallel
@@ -78,6 +85,56 @@ export default function StudentPortal() {
 
   const handleNewAchievements = (newAchs) => setToastQueue((prev) => [...prev, ...newAchs]);
   const handleToastDone = () => setToastQueue((prev) => prev.slice(1));
+
+  // Add wrong practice questions to the knowledge point's error book
+  const handleWrongQuestionsAdd = useCallback((newWrongQs) => {
+    if (!masteryMap || newWrongQs.length === 0) return;
+    const kp = newWrongQs[0]['知识点'];
+    const entry = masteryMap.get(kp);
+    if (!entry) return;
+
+    // Add to masteryMap (in-place update + force re-render)
+    const updated = new Map(masteryMap);
+    const existing = updated.get(kp);
+    existing.wrongQuestions = [...existing.wrongQuestions, ...newWrongQs];
+    // Recalculate mastery
+    existing.possible += newWrongQs.length;
+    existing.mastery = existing.possible > 0 ? existing.earned / existing.possible : 0;
+    setMasteryMap(updated);
+
+    // Update selectedNode if viewing this kp
+    if (selectedNode && selectedNode.name === kp) {
+      setSelectedNode({ ...selectedNode, ...existing });
+    }
+  }, [masteryMap, selectedNode]);
+
+  // Delete a question from error book
+  const handleDeleteQuestion = useCallback((nodeName, questionId) => {
+    if (!masteryMap) return;
+    const updated = new Map(masteryMap);
+    const entry = updated.get(nodeName);
+    if (!entry) return;
+
+    entry.wrongQuestions = entry.wrongQuestions.filter((q, i) => {
+      const qId = q['题目ID'] || i;
+      return qId !== questionId;
+    });
+    // Recalculate mastery (removing a wrong question means one less wrong)
+    if (entry.possible > 0) {
+      entry.earned = Math.min(entry.earned + 1, entry.possible); // restored 1 point
+      entry.mastery = entry.earned / entry.possible;
+    }
+    setMasteryMap(updated);
+
+    // Update or close selectedNode
+    if (selectedNode && selectedNode.name === nodeName) {
+      if (entry.wrongQuestions.length === 0) {
+        setSelectedNode(null);
+      } else {
+        setSelectedNode({ ...selectedNode, ...entry });
+      }
+    }
+  }, [masteryMap, selectedNode]);
 
   const handleLogout = () => {
     logout();
@@ -150,6 +207,7 @@ export default function StudentPortal() {
           onPptRequest={handlePptRequest}
           onPracticeRequest={(q) => setPracticeQuestion(q)}
           onInteractiveRequest={(q) => setInteractiveQuestion(q)}
+          onDeleteQuestion={handleDeleteQuestion}
         />
       )}
 
@@ -163,6 +221,7 @@ export default function StudentPortal() {
           studentId={studentId}
           onClose={() => setPracticeQuestion(null)}
           onNewAchievements={handleNewAchievements}
+          onWrongQuestionsAdd={handleWrongQuestionsAdd}
         />
       )}
 

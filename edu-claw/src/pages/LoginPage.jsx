@@ -19,9 +19,15 @@ export default function LoginPage() {
   }, []);
 
   // Auto-login if already logged in
+  // Auto-login: restore GitHub binding and redirect
   useEffect(() => {
     const account = getCurrentAccount();
     if (account) {
+      const accounts = JSON.parse(localStorage.getItem('edu_accounts') || '{}');
+      const github = accounts[account.studentId]?.github;
+      if (github) {
+        saveGithubConfig(github.token, github.username, github.avatar);
+      }
       navigate('/student');
     }
   }, [navigate]);

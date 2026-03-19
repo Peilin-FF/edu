@@ -28,7 +28,7 @@
 }
 .inter-spinner {
   width: 40px; height: 40px; border: 3px solid #e8e8e8;
-  border-top-color: #5470c6; border-radius: 50%;
+  border-top-color: #2563eb; border-radius: 50%;
   animation: interSpin 0.8s linear infinite; margin-bottom: 16px;
 }
 @keyframes interSpin { to { transform: rotate(360deg); } }
@@ -37,13 +37,13 @@
 .inter-status-reason { font-size: 14px; color: #666; margin: 0 0 16px; line-height: 1.6; }
 .inter-status-hint { font-size: 13px; color: #999; margin: 0 0 20px; }
 .inter-status-idea {
-  font-size: 14px; color: #5470c6; margin: 8px 0 0;
+  font-size: 14px; color: #2563eb; margin: 8px 0 0;
   background: #f0f4ff; padding: 10px 18px; border-radius: 10px;
   max-width: 400px;
 }
 .inter-status-error { font-size: 14px; color: #dc2626; margin-bottom: 12px; }
 .inter-btn {
-  background: #5470c6; color: white; border: none; border-radius: 8px;
+  background: #2563eb; color: white; border: none; border-radius: 8px;
   padding: 10px 24px; font-size: 14px; cursor: pointer;
 }
 .inter-btn:hover { background: #4060b6; }
@@ -59,7 +59,7 @@
 .inter-header-title { font-size: 15px; font-weight: 700; color: #2c3e50; }
 .inter-header-kp {
   margin-left: auto;
-  background: #e8f4fd; color: #5470c6; padding: 3px 10px;
+  background: #e8f4fd; color: #2563eb; padding: 3px 10px;
   border-radius: 12px; font-size: 12px; font-weight: 600;
 }
 .inter-iframe {

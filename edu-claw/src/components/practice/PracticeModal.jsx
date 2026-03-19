@@ -5,7 +5,7 @@ import { cachedGenerate, clearCacheEntry } from '../../utils/genCache';
 import PracticeQuestion from './PracticeQuestion';
 import './Practice.css';
 
-export default function PracticeModal({ question, studentId, onClose, onNewAchievements }) {
+export default function PracticeModal({ question, studentId, onClose, onNewAchievements, onWrongQuestionsAdd }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -74,8 +74,30 @@ export default function PracticeModal({ question, studentId, onClose, onNewAchie
         const achs = JSON.parse(localStorage.getItem('edu_progress'))[studentId].achievements;
         onNewAchievements(achs.slice(before));
       }
+
+      // Collect wrong practice questions and add to error book
+      if (onWrongQuestionsAdd) {
+        const wrongOnes = data.questions
+          .filter((q) => normalizeAnswer(answers[q.id]) !== normalizeAnswer(q.answer))
+          .map((q) => ({
+            '题目ID': `practice_${Date.now()}_${q.id}`,
+            '题型': q.type,
+            '题目': q.question,
+            '选项': q.options || null,
+            '学生答案': answers[q.id] || '',
+            '正确答案': q.answer,
+            '满分': 1,
+            '得分': 0,
+            '知识点': kp,
+            '扣分原因': q.explanation || '',
+            '_source': 'practice', // mark as from practice
+          }));
+        if (wrongOnes.length > 0) {
+          onWrongQuestionsAdd(wrongOnes);
+        }
+      }
     }
-  }, [allSubmitted, data, answers, studentId, question, onNewAchievements]);
+  }, [allSubmitted, data, answers, studentId, question, onNewAchievements, onWrongQuestionsAdd]);
 
   const handleAnswer = (qId, value) => {
     if (submitted[qId]) return;

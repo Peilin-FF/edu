@@ -2,7 +2,7 @@
 .chat-fab {
   position: fixed; z-index: 1500;
   width: 56px; height: 56px; border-radius: 50%;
-  background: linear-gradient(135deg, #5470c6, #3ba272);
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
   color: white; border: none; font-size: 26px; cursor: grab;
   box-shadow: 0 4px 16px rgba(84, 112, 198, 0.4);
   transition: box-shadow 0.2s;
@@ -39,7 +39,7 @@
 .chat-panel-header {
   display: flex; align-items: center; gap: 12px;
   padding: 14px 16px;
-  background: linear-gradient(135deg, #5470c6, #3ba272);
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
   color: white;
 }
 .chat-panel-avatar { font-size: 28px; }
@@ -73,7 +73,7 @@
   border-top-left-radius: 4px;
 }
 .chat-msg--user .chat-msg-bubble {
-  background: linear-gradient(135deg, #5470c6, #3ba272);
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
   color: white;
   border-top-right-radius: 4px;
 }
@@ -96,11 +96,11 @@
 .chat-suggestion {
   background: white; border: 1px solid #d4e5f7;
   border-radius: 18px; padding: 8px 14px;
-  font-size: 12.5px; color: #5470c6; cursor: pointer;
+  font-size: 12.5px; color: #2563eb; cursor: pointer;
   text-align: left; transition: all 0.15s;
 }
 .chat-suggestion:hover {
-  background: #eef2ff; border-color: #5470c6;
+  background: #eef2ff; border-color: #2563eb;
 }
 
 /* Input Area */
@@ -117,11 +117,11 @@
   font-family: inherit;
   transition: border-color 0.2s;
 }
-.chat-input:focus { border-color: #5470c6; }
+.chat-input:focus { border-color: #2563eb; }
 .chat-input:disabled { background: #f5f5f5; }
 .chat-send {
   width: 36px; height: 36px; border-radius: 50%;
-  background: linear-gradient(135deg, #5470c6, #3ba272);
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
   color: white; border: none; font-size: 16px; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0; transition: opacity 0.2s;

@@ -1,4 +1,4 @@
-export default function WeakPointDrawer({ node, onClose, onPptRequest, onPracticeRequest, onInteractiveRequest }) {
+export default function WeakPointDrawer({ node, onClose, onPptRequest, onPracticeRequest, onInteractiveRequest, onDeleteQuestion }) {
   const pct = Math.round(node.mastery * 100);
 
   return (
@@ -17,10 +17,20 @@ export default function WeakPointDrawer({ node, onClose, onPptRequest, onPractic
         <div className="drawer-body">
           <h4>错题回顾 ({node.wrongQuestions.length}题)</h4>
           {node.wrongQuestions.map((q, i) => (
-            <div key={i} className="wrong-card">
+            <div key={q['题目ID'] || i} className="wrong-card">
               <div className="wrong-card-head">
                 <span className="q-type">{q['题型']}</span>
+                {q._source === 'practice' && <span className="q-source">练习新增</span>}
                 <span className="q-score">{q['得分']}/{q['满分']}分</span>
+                {onDeleteQuestion && (
+                  <button
+                    className="q-delete"
+                    title="从错题本移除"
+                    onClick={() => onDeleteQuestion(node.name, q['题目ID'] || i)}
+                  >
+                    &#x2715;
+                  </button>
+                )}
               </div>
               <div className="q-text">{q['题目']}</div>
               {q['选项'] && (

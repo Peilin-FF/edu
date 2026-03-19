@@ -30,7 +30,7 @@
   background: none; font-size: 13px; color: #999; cursor: pointer;
   font-weight: 600; transition: all 0.2s;
 }
-.prog-tab.active { color: #5470c6; border-bottom-color: #5470c6; }
+.prog-tab.active { color: #2563eb; border-bottom-color: #2563eb; }
 .prog-tab:hover { color: #333; }
 
 /* Body */

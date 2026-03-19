@@ -27,7 +27,7 @@
 }
 .prac-header h2 { margin: 0; font-size: 18px; color: #2c3e50; }
 .prac-kp {
-  background: #e8f4fd; color: #5470c6; padding: 3px 10px;
+  background: #e8f4fd; color: #2563eb; padding: 3px 10px;
   border-radius: 12px; font-size: 12px; font-weight: 600;
 }
 
@@ -39,13 +39,13 @@
 }
 .prac-spinner {
   width: 36px; height: 36px; border: 3px solid #e8e8e8;
-  border-top-color: #5470c6; border-radius: 50%;
+  border-top-color: #2563eb; border-radius: 50%;
   animation: pracSpin 0.8s linear infinite; margin-bottom: 14px;
 }
 @keyframes pracSpin { to { transform: rotate(360deg); } }
 .prac-error p { color: #e74c3c; margin-bottom: 12px; font-size: 14px; }
 .prac-retry-btn {
-  background: #5470c6; color: white; border: none; border-radius: 8px;
+  background: #2563eb; color: white; border: none; border-radius: 8px;
   padding: 8px 20px; font-size: 13px; cursor: pointer;
 }
 .prac-retry-btn:hover { background: #4060b6; }
@@ -59,8 +59,8 @@
   padding: 10px 8px; border: 2px solid #e8e8e8; border-radius: 10px;
   background: white; cursor: pointer; transition: all 0.2s;
 }
-.prac-tab:hover { border-color: #5470c6; }
-.prac-tab.active { border-color: #5470c6; background: #f0f4ff; }
+.prac-tab:hover { border-color: #2563eb; }
+.prac-tab.active { border-color: #2563eb; background: #f0f4ff; }
 .prac-tab.correct { border-color: #059669; background: #d1fae5; }
 .prac-tab.wrong { border-color: #dc2626; background: #fee2e2; }
 .prac-tab-num { font-size: 13px; font-weight: 600; color: #333; }
@@ -96,8 +96,8 @@
   background: white; cursor: pointer; font-size: 14px;
   transition: all 0.15s; text-align: left;
 }
-.prac-q-opt:hover:not(:disabled) { border-color: #5470c6; background: #f8f9ff; }
-.prac-q-opt.selected { border-color: #5470c6; background: #eef2ff; }
+.prac-q-opt:hover:not(:disabled) { border-color: #2563eb; background: #f8f9ff; }
+.prac-q-opt.selected { border-color: #2563eb; background: #eef2ff; }
 .prac-q-opt.correct { border-color: #059669; background: #d1fae5; }
 .prac-q-opt.wrong { border-color: #dc2626; background: #fee2e2; }
 .prac-q-opt:disabled { cursor: default; }
@@ -107,7 +107,7 @@
   font-weight: 700; font-size: 13px; flex-shrink: 0;
   background: #f0f0f0; color: #555;
 }
-.prac-q-opt.selected .prac-q-opt-key { background: #5470c6; color: white; }
+.prac-q-opt.selected .prac-q-opt-key { background: #2563eb; color: white; }
 .prac-q-opt.correct .prac-q-opt-key { background: #059669; color: white; }
 .prac-q-opt.wrong .prac-q-opt-key { background: #dc2626; color: white; }
 
@@ -118,8 +118,8 @@
   background: white; font-size: 16px; font-weight: 600; cursor: pointer;
   transition: all 0.15s;
 }
-.prac-q-judge-btn:hover:not(:disabled) { border-color: #5470c6; }
-.prac-q-judge-btn.selected { border-color: #5470c6; background: #eef2ff; }
+.prac-q-judge-btn:hover:not(:disabled) { border-color: #2563eb; }
+.prac-q-judge-btn.selected { border-color: #2563eb; background: #eef2ff; }
 .prac-q-judge-btn.correct { border-color: #059669; background: #d1fae5; color: #059669; }
 .prac-q-judge-btn.wrong { border-color: #dc2626; background: #fee2e2; color: #dc2626; }
 
@@ -130,7 +130,7 @@
   border-radius: 10px; font-size: 15px; outline: none;
   transition: border-color 0.2s;
 }
-.prac-q-input:focus { border-color: #5470c6; }
+.prac-q-input:focus { border-color: #2563eb; }
 .prac-q-input.correct { border-color: #059669; background: #f0fff4; }
 .prac-q-input.wrong { border-color: #dc2626; background: #fff5f5; }
 .prac-q-correct-ans {
@@ -140,7 +140,7 @@
 /* Submit */
 .prac-submit-btn {
   display: block; width: 100%; padding: 12px;
-  background: linear-gradient(135deg, #5470c6, #3ba272);
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
   color: white; border: none; border-radius: 10px;
   font-size: 15px; font-weight: 600; cursor: pointer;
   transition: opacity 0.2s;
@@ -186,8 +186,8 @@
 /* ===== Practice Button in Wrong Card ===== */
 .practice-btn {
   display: block; width: 100%; margin-top: 6px; padding: 8px 0;
-  background: white; color: #5470c6;
-  border: 1.5px solid #5470c6; border-radius: 6px;
+  background: white; color: #2563eb;
+  border: 1.5px solid #2563eb; border-radius: 6px;
   font-size: 13px; font-weight: 600; cursor: pointer;
   transition: all 0.2s;
 }
