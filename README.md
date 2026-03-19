@@ -273,11 +273,11 @@ npm run dev
 ---
 
 ## 致谢
-Ideas源于一个理念：Openclaw比LLM更懂你！完成工作期间参考了以下优秀工作：
+Ideas源于一个理念：Openclaw比LLM更懂你！完成工作期间参考了以下优秀项目：
 
 - [OpenClaw](https://github.com/anthropics/openclaw) — Agent 框架与 Skills 系统
 - [gitagent](https://github.com/anthropics/gitagent) — Git-Based Memory 设计理念
-- [OpenMAIC](https://github.com/OpenMAIC/OpenMAIC) — 互动课堂生成参考
+- [OpenMAIC](https://github.com/OpenMAIC/OpenMAIC) — 互动课堂
 - [MinerU](https://mineru.net) — PDF 文档智能解析
 - [shadcn/ui](https://ui.shadcn.com) — UI 设计风格参考
 
