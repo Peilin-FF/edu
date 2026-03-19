@@ -19,6 +19,8 @@ export default defineConfig(({ mode }) => {
         '/api/chat': {
           target: env.LLM_BASE_URL?.replace(/\/v1$/, '') || 'https://api-gateway.glm.ai',
           changeOrigin: true,
+          timeout: 120000,
+          proxyTimeout: 120000,
           rewrite: () => '/v1/chat/completions',
           configure: (proxy) => {
             proxy.on('proxyReq', (proxyReq) => {
