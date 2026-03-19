@@ -138,6 +138,9 @@ body {
   background: #fafafa; border: 1px solid #eee; border-radius: 8px;
   padding: 14px; margin-bottom: 12px;
 }
+.wrong-card-actions { display: flex; gap: 8px; margin-top: 10px; }
+.wrong-card-actions .ppt-btn,
+.wrong-card-actions .practice-btn { flex: 1; margin-top: 0; }
 .wrong-card-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
 .q-type {
   background: #e8e8e8; padding: 2px 8px; border-radius: 4px;

@@ -1,0 +1,194 @@
+/* ===== Practice Modal ===== */
+.prac-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5); z-index: 2000;
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(3px);
+}
+.prac-modal {
+  width: 90vw; max-width: 680px; max-height: 88vh;
+  background: white; border-radius: 16px;
+  display: flex; flex-direction: column; position: relative;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.25);
+  overflow: hidden;
+}
+.prac-close {
+  position: absolute; top: 12px; right: 16px; z-index: 10;
+  background: none; border: none; font-size: 20px; cursor: pointer;
+  color: #999; line-height: 1;
+}
+.prac-close:hover { color: #333; }
+
+/* ===== Header ===== */
+.prac-header {
+  padding: 20px 24px 14px;
+  border-bottom: 1px solid #eee;
+  display: flex; align-items: center; gap: 12px;
+}
+.prac-header h2 { margin: 0; font-size: 18px; color: #2c3e50; }
+.prac-kp {
+  background: #e8f4fd; color: #5470c6; padding: 3px 10px;
+  border-radius: 12px; font-size: 12px; font-weight: 600;
+}
+
+/* ===== Loading & Error ===== */
+.prac-loading, .prac-error {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 60px 20px; color: #666;
+}
+.prac-spinner {
+  width: 36px; height: 36px; border: 3px solid #e8e8e8;
+  border-top-color: #5470c6; border-radius: 50%;
+  animation: pracSpin 0.8s linear infinite; margin-bottom: 14px;
+}
+@keyframes pracSpin { to { transform: rotate(360deg); } }
+.prac-error p { color: #e74c3c; margin-bottom: 12px; font-size: 14px; }
+.prac-retry-btn {
+  background: #5470c6; color: white; border: none; border-radius: 8px;
+  padding: 8px 20px; font-size: 13px; cursor: pointer;
+}
+.prac-retry-btn:hover { background: #4060b6; }
+
+/* ===== Tabs ===== */
+.prac-tabs {
+  display: flex; gap: 8px; padding: 14px 24px 0;
+}
+.prac-tab {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 10px 8px; border: 2px solid #e8e8e8; border-radius: 10px;
+  background: white; cursor: pointer; transition: all 0.2s;
+}
+.prac-tab:hover { border-color: #5470c6; }
+.prac-tab.active { border-color: #5470c6; background: #f0f4ff; }
+.prac-tab.correct { border-color: #059669; background: #d1fae5; }
+.prac-tab.wrong { border-color: #dc2626; background: #fee2e2; }
+.prac-tab-num { font-size: 13px; font-weight: 600; color: #333; }
+.prac-tab-diff { font-size: 11px; color: #999; }
+.prac-tab.correct .prac-tab-num { color: #059669; }
+.prac-tab.wrong .prac-tab-num { color: #dc2626; }
+
+/* ===== Body ===== */
+.prac-body {
+  flex: 1; overflow-y: auto; padding: 20px 24px;
+}
+
+/* ===== Question ===== */
+.prac-q-meta { display: flex; gap: 8px; margin-bottom: 12px; }
+.prac-q-type {
+  background: #e8e8e8; padding: 2px 10px; border-radius: 4px;
+  font-size: 12px; color: #666;
+}
+.prac-q-diff { padding: 2px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+.prac-q-diff--easy { background: #d1fae5; color: #059669; }
+.prac-q-diff--mid { background: #fef3c7; color: #d97706; }
+.prac-q-diff--hard { background: #fee2e2; color: #dc2626; }
+
+.prac-q-text {
+  font-size: 15px; line-height: 1.8; color: #333; margin-bottom: 16px;
+}
+
+/* Options */
+.prac-q-options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.prac-q-opt {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px; border: 2px solid #e8e8e8; border-radius: 10px;
+  background: white; cursor: pointer; font-size: 14px;
+  transition: all 0.15s; text-align: left;
+}
+.prac-q-opt:hover:not(:disabled) { border-color: #5470c6; background: #f8f9ff; }
+.prac-q-opt.selected { border-color: #5470c6; background: #eef2ff; }
+.prac-q-opt.correct { border-color: #059669; background: #d1fae5; }
+.prac-q-opt.wrong { border-color: #dc2626; background: #fee2e2; }
+.prac-q-opt:disabled { cursor: default; }
+.prac-q-opt-key {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 13px; flex-shrink: 0;
+  background: #f0f0f0; color: #555;
+}
+.prac-q-opt.selected .prac-q-opt-key { background: #5470c6; color: white; }
+.prac-q-opt.correct .prac-q-opt-key { background: #059669; color: white; }
+.prac-q-opt.wrong .prac-q-opt-key { background: #dc2626; color: white; }
+
+/* Judge */
+.prac-q-judge { display: flex; gap: 12px; margin-bottom: 16px; }
+.prac-q-judge-btn {
+  flex: 1; padding: 14px; border: 2px solid #e8e8e8; border-radius: 10px;
+  background: white; font-size: 16px; font-weight: 600; cursor: pointer;
+  transition: all 0.15s;
+}
+.prac-q-judge-btn:hover:not(:disabled) { border-color: #5470c6; }
+.prac-q-judge-btn.selected { border-color: #5470c6; background: #eef2ff; }
+.prac-q-judge-btn.correct { border-color: #059669; background: #d1fae5; color: #059669; }
+.prac-q-judge-btn.wrong { border-color: #dc2626; background: #fee2e2; color: #dc2626; }
+
+/* Fill-in */
+.prac-q-fill { margin-bottom: 16px; }
+.prac-q-input {
+  width: 100%; padding: 12px 14px; border: 2px solid #e8e8e8;
+  border-radius: 10px; font-size: 15px; outline: none;
+  transition: border-color 0.2s;
+}
+.prac-q-input:focus { border-color: #5470c6; }
+.prac-q-input.correct { border-color: #059669; background: #f0fff4; }
+.prac-q-input.wrong { border-color: #dc2626; background: #fff5f5; }
+.prac-q-correct-ans {
+  margin-top: 8px; font-size: 13px; color: #059669; font-weight: 600;
+}
+
+/* Submit */
+.prac-submit-btn {
+  display: block; width: 100%; padding: 12px;
+  background: linear-gradient(135deg, #5470c6, #3ba272);
+  color: white; border: none; border-radius: 10px;
+  font-size: 15px; font-weight: 600; cursor: pointer;
+  transition: opacity 0.2s;
+}
+.prac-submit-btn:hover:not(:disabled) { opacity: 0.9; }
+.prac-submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Feedback */
+.prac-feedback {
+  margin-top: 16px; padding: 14px 16px; border-radius: 10px;
+  border: 1px solid;
+}
+.prac-feedback.correct { background: #f0fff4; border-color: #a7f3d0; }
+.prac-feedback.wrong { background: #fff5f5; border-color: #fecaca; }
+.prac-feedback-tag { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.prac-feedback.correct .prac-feedback-tag { color: #059669; }
+.prac-feedback.wrong .prac-feedback-tag { color: #dc2626; }
+.prac-explanation { font-size: 13px; line-height: 1.7; color: #555; }
+
+/* ===== Footer (Nav) ===== */
+.prac-footer {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; padding: 14px 24px;
+  border-top: 1px solid #eee;
+}
+.prac-nav-btn {
+  background: #f5f7fa; border: 1px solid #ddd; border-radius: 8px;
+  padding: 8px 16px; font-size: 13px; cursor: pointer; color: #555;
+}
+.prac-nav-btn:hover:not(:disabled) { background: #e8e8e8; }
+.prac-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.prac-progress { font-size: 13px; color: #999; min-width: 50px; text-align: center; }
+
+/* ===== Result Banner ===== */
+.prac-result {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 24px; background: linear-gradient(135deg, #f0f4ff, #e8f4fd);
+  border-top: 1px solid #d4e5f7;
+}
+.prac-result-icon { font-size: 28px; }
+.prac-result-text { flex: 1; font-size: 14px; color: #2c3e50; font-weight: 600; }
+
+/* ===== Practice Button in Wrong Card ===== */
+.practice-btn {
+  display: block; width: 100%; margin-top: 6px; padding: 8px 0;
+  background: white; color: #5470c6;
+  border: 1.5px solid #5470c6; border-radius: 6px;
+  font-size: 13px; font-weight: 600; cursor: pointer;
+  transition: all 0.2s;
+}
+.practice-btn:hover { background: #f0f4ff; }

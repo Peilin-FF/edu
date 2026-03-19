@@ -1,4 +1,4 @@
-export default function WeakPointDrawer({ node, onClose, onPptRequest }) {
+export default function WeakPointDrawer({ node, onClose, onPptRequest, onPracticeRequest }) {
   const pct = Math.round(node.mastery * 100);
 
   return (
@@ -42,11 +42,18 @@ export default function WeakPointDrawer({ node, onClose, onPptRequest }) {
               {q['扣分原因'] && q['扣分原因'] !== '无' && (
                 <div className="q-reason">{q['扣分原因']}</div>
               )}
-              {onPptRequest && (
-                <button className="ppt-btn" onClick={() => onPptRequest(q)}>
-                  查看 PPT 讲解
-                </button>
-              )}
+              <div className="wrong-card-actions">
+                {onPptRequest && (
+                  <button className="ppt-btn" onClick={() => onPptRequest(q)}>
+                    查看 PPT 讲解
+                  </button>
+                )}
+                {onPracticeRequest && (
+                  <button className="practice-btn" onClick={() => onPracticeRequest(q)}>
+                    强化练习
+                  </button>
+                )}
+              </div>
             </div>
           ))}
         </div>

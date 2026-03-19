@@ -1,0 +1,117 @@
+/* ===== Progress Panel ===== */
+.prog-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4); z-index: 2000;
+  display: flex; align-items: center; justify-content: center;
+}
+.prog-panel {
+  width: 90vw; max-width: 560px; max-height: 80vh;
+  background: white; border-radius: 16px;
+  display: flex; flex-direction: column; position: relative;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+.prog-close {
+  position: absolute; top: 12px; right: 16px;
+  background: none; border: none; font-size: 20px;
+  cursor: pointer; color: #999; line-height: 1;
+}
+.prog-close:hover { color: #333; }
+.prog-title {
+  margin: 0; padding: 20px 24px 0; font-size: 20px; color: #2c3e50;
+}
+
+/* Tabs */
+.prog-tabs {
+  display: flex; gap: 4px; padding: 14px 24px 0;
+}
+.prog-tab {
+  flex: 1; padding: 8px 0; border: none; border-bottom: 2px solid transparent;
+  background: none; font-size: 13px; color: #999; cursor: pointer;
+  font-weight: 600; transition: all 0.2s;
+}
+.prog-tab.active { color: #5470c6; border-bottom-color: #5470c6; }
+.prog-tab:hover { color: #333; }
+
+/* Body */
+.prog-body { flex: 1; overflow-y: auto; padding: 16px 24px 24px; }
+.prog-empty { text-align: center; color: #999; padding: 40px 0; font-size: 14px; }
+
+/* Stats */
+.prog-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px;
+}
+.prog-stat {
+  text-align: center; padding: 14px 8px;
+  background: #f8f9fa; border-radius: 10px;
+}
+.prog-stat-value { font-size: 24px; font-weight: 800; color: #2c3e50; }
+.prog-stat-label { font-size: 11px; color: #999; margin-top: 2px; }
+
+/* Section title */
+.prog-section-title { font-size: 14px; color: #666; margin: 0 0 10px; }
+
+/* KP list */
+.prog-kp-list { display: flex; flex-direction: column; gap: 8px; }
+.prog-kp-item { display: flex; align-items: center; gap: 8px; }
+.prog-kp-name { width: 120px; font-size: 12px; color: #555; flex-shrink: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.prog-kp-bar-wrap { flex: 1; height: 8px; background: #f0f0f0; border-radius: 4px; overflow: hidden; }
+.prog-kp-bar { height: 100%; border-radius: 4px; transition: width 0.5s; min-width: 2px; }
+.prog-kp-pct { width: 36px; text-align: right; font-size: 12px; color: #555; font-weight: 600; }
+.prog-kp-count { width: 30px; text-align: right; font-size: 11px; color: #999; }
+
+/* Achievements */
+.prog-achievements { display: flex; flex-direction: column; gap: 8px; }
+.prog-ach {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px; border-radius: 10px;
+  border: 1px solid #e8e8e8; transition: all 0.2s;
+}
+.prog-ach.unlocked { background: #fffbeb; border-color: #fac858; }
+.prog-ach.locked { opacity: 0.45; filter: grayscale(1); }
+.prog-ach-icon { font-size: 28px; }
+.prog-ach-info { flex: 1; }
+.prog-ach-name { font-size: 14px; font-weight: 700; color: #2c3e50; }
+.prog-ach-desc { font-size: 12px; color: #888; margin-top: 2px; }
+.prog-ach-check { color: #059669; font-size: 18px; font-weight: 700; }
+
+/* History */
+.prog-history { display: flex; flex-direction: column; gap: 6px; }
+.prog-hist-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; background: #f8f9fa; border-radius: 8px;
+  font-size: 13px;
+}
+.prog-hist-date { color: #999; width: 80px; flex-shrink: 0; }
+.prog-hist-kp { flex: 1; color: #555; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.prog-hist-score { font-weight: 700; color: #555; }
+.prog-hist-score.perfect { color: #059669; }
+
+/* ===== Achievement Toast ===== */
+.ach-toast {
+  position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px);
+  z-index: 3000;
+  display: flex; align-items: center; gap: 12px;
+  background: linear-gradient(135deg, #fffbeb, #fef3c7);
+  border: 2px solid #fac858;
+  border-radius: 14px; padding: 14px 24px;
+  box-shadow: 0 8px 32px rgba(250, 200, 88, 0.3);
+  opacity: 0; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.ach-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+.ach-toast-icon { font-size: 32px; }
+.ach-toast-title { font-size: 12px; color: #d97706; font-weight: 700; }
+.ach-toast-name { font-size: 14px; color: #2c3e50; font-weight: 600; margin-top: 2px; }
+
+/* ===== Progress Button in Header ===== */
+.progress-btn {
+  background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4);
+  color: white; border-radius: 14px; padding: 4px 12px; font-size: 12px;
+  cursor: pointer; display: flex; align-items: center; gap: 4px;
+}
+.progress-btn:hover { background: rgba(255,255,255,0.3); }
+.progress-btn .streak-fire { animation: streakPulse 1.5s ease infinite; }
+@keyframes streakPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
