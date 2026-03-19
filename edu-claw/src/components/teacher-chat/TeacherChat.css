@@ -1,0 +1,35 @@
+.teacher-fab {
+  position: fixed; z-index: 1500;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--primary); color: var(--primary-fg);
+  border: none; font-size: 22px; cursor: grab;
+  box-shadow: var(--shadow-md); transition: box-shadow 0.15s;
+  display: flex; align-items: center; justify-content: center;
+  touch-action: none; user-select: none;
+}
+.teacher-fab:hover { box-shadow: 0 4px 12px rgb(0 0 0 / 0.15); }
+.teacher-fab--dragging { cursor: grabbing; transform: scale(1.08); }
+
+.teacher-chat-panel {
+  position: fixed; z-index: 1500;
+  width: 380px; max-width: calc(100vw - 48px);
+  height: 500px; max-height: calc(100vh - 120px);
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 30px rgb(0 0 0 / 0.12);
+  display: flex; flex-direction: column;
+  animation: fadeIn 0.2s ease; overflow: hidden;
+}
+
+.teacher-chat-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 16px; border-bottom: 1px solid var(--border);
+}
+.teacher-chat-name { font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+.teacher-chat-status { font-size: 11px; color: var(--text-muted); }
+
+.teacher-chat-body {
+  flex: 1; overflow-y: auto; padding: 14px;
+  display: flex; flex-direction: column; gap: 10px;
+  background: var(--bg-secondary);
+}

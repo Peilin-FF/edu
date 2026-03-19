@@ -1,0 +1,54 @@
+/* ===== Assignment Cards ===== */
+.hw-error { color: var(--red); font-size: 12px; margin: 0 0 12px; }
+
+.hw-card {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 14px; margin-bottom: 10px;
+  transition: var(--transition);
+}
+.hw-card.hw-done { border-color: var(--green); background: #f0fdf4; }
+.hw-card.hw-overdue { border-color: var(--red); background: #fef2f2; }
+
+.hw-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.hw-title { font-size: 14px; font-weight: 700; margin: 0; }
+.hw-status { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 99px; }
+.hw-status--done { background: #ecfdf5; color: var(--green); }
+.hw-status--pending { background: var(--bg-muted); color: var(--text-secondary); }
+.hw-status--overdue { background: #fef2f2; color: var(--red); }
+
+.hw-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.6; margin: 0 0 8px; }
+.hw-meta { display: flex; gap: 12px; font-size: 11px; color: var(--text-muted); margin-bottom: 10px; }
+
+.hw-upload-btn {
+  width: 100%; padding: 8px; background: var(--primary); color: var(--primary-fg);
+  border: none; border-radius: var(--radius); font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: var(--transition);
+}
+.hw-upload-btn:hover:not(:disabled) { opacity: 0.85; }
+.hw-upload-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.hw-resubmit-btn {
+  width: 100%; padding: 8px; background: var(--bg); color: var(--text-secondary);
+  border: 1px solid var(--border); border-radius: var(--radius); font-size: 12px;
+  font-weight: 500; cursor: pointer; transition: var(--transition);
+}
+.hw-resubmit-btn:hover:not(:disabled) { background: var(--bg-muted); }
+
+/* ===== Teacher Submission View ===== */
+.sub-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.sub-table th {
+  text-align: left; padding: 10px; background: var(--primary); color: var(--primary-fg);
+  font-weight: 600; font-size: 11px; text-transform: uppercase;
+}
+.sub-table th:first-child { border-radius: var(--radius) 0 0 0; }
+.sub-table th:last-child { border-radius: 0 var(--radius) 0 0; }
+.sub-table td { padding: 8px 10px; border-bottom: 1px solid var(--bg-muted); }
+.sub-table tbody tr:hover { background: var(--bg-secondary); }
+.sub-badge { padding: 2px 8px; border-radius: 99px; font-size: 10px; font-weight: 600; }
+.sub-badge--done { background: #ecfdf5; color: var(--green); }
+.sub-badge--pending { background: var(--bg-muted); color: var(--text-muted); }
+
+.sub-stats { display: flex; gap: 16px; margin-bottom: 16px; font-size: 13px; }
+.sub-stat-value { font-weight: 700; }
+
+.hw-select { padding: 6px 12px; border: 1px solid var(--border); border-radius: var(--radius); font-size: 13px; outline: none; }

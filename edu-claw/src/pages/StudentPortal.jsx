@@ -9,6 +9,8 @@ import ChatBubble from '../components/chat/ChatBubble';
 import ProgressPanel from '../components/progress/ProgressPanel';
 import AchievementToast from '../components/progress/AchievementToast';
 import InteractiveModal from '../components/interactive/InteractiveModal';
+import AssignmentPanel from '../components/assignment/AssignmentPanel';
+import NotificationBell from '../components/NotificationBell';
 import SyncStatus from '../components/SyncStatus';
 import { recordPptView, getProgress, pullFromGithub } from '../utils/progressStore';
 import { isGithubConnected, saveFullContext, saveGithubConfig } from '../utils/githubStore';
@@ -28,6 +30,7 @@ export default function StudentPortal() {
   const [practiceQuestion, setPracticeQuestion] = useState(null);
   const [interactiveQuestion, setInteractiveQuestion] = useState(null);
   const [showProgress, setShowProgress] = useState(false);
+  const [showAssignments, setShowAssignments] = useState(false);
   const [toastQueue, setToastQueue] = useState([]);
   const [syncing, setSyncing] = useState(false);
 
@@ -50,17 +53,33 @@ export default function StudentPortal() {
       }
     }
 
-    // Load course info + course data + student data
+    // Load course info + knowledge tree + student data (if available)
     const basePath = `/data/courses/${courseId}`;
+    const hasFile = !!account.file;
 
-    Promise.all([
+    const fetches = [
       fetch('/data/courses/index.json').then((r) => r.json()),
       fetch(`${basePath}/knowledge.json`).then((r) => r.json()),
-      fetch(`${basePath}/students/${account.file}`).then((r) => r.json()),
-    ]).then(([courseIndex, treeData, studentData]) => {
+    ];
+    if (hasFile) {
+      fetches.push(fetch(`${basePath}/students/${account.file}`).then((r) => r.json()));
+    }
+
+    Promise.all(fetches).then(([courseIndex, treeData, studentData]) => {
       const courseInfo = courseIndex.courses.find((c) => c.id === courseId);
       setCourse(courseInfo);
       setTree(treeData);
+
+      // If no data file, create a placeholder student object
+      if (!studentData) {
+        studentData = {
+          '学生ID': account.studentId,
+          '姓名': account.name,
+          '总分': '-',
+          '作业考试时间': '未提交',
+          '题目列表': [],
+        };
+      }
       setStudent(studentData);
 
       const names = collectNodeNames(treeData);
@@ -171,7 +190,9 @@ export default function StudentPortal() {
             {progress?.streak > 0 && <span className="streak-fire">{'\uD83D\uDD25'}</span>}
             学习进度
           </button>
+          <button className="switch-btn" onClick={() => setShowAssignments(true)}>作业</button>
           <Link to="/settings" className="switch-btn">设置</Link>
+          <NotificationBell studentId={studentId} />
           <SyncStatus syncing={syncing} />
         </div>
         <div className="header-center">
@@ -212,6 +233,7 @@ export default function StudentPortal() {
 
       {interactiveQuestion && <InteractiveModal question={interactiveQuestion} onClose={() => setInteractiveQuestion(null)} />}
       {showProgress && <ProgressPanel studentId={studentId} onClose={() => setShowProgress(false)} />}
+      {showAssignments && <AssignmentPanel courseId={courseId} studentId={studentId} onClose={() => setShowAssignments(false)} />}
       <AchievementToast achievement={toastQueue[0] || null} onDone={handleToastDone} />
 
       <ChatBubble

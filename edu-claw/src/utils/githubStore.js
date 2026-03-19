@@ -146,6 +146,42 @@ export async function writeFile(token, username, path, content, message) {
   return true;
 }
 
+/** Upload a binary file (e.g. PDF) to the repo */
+export async function uploadBinaryFile(token, username, path, arrayBuffer, message) {
+  const repo = repoName(username);
+
+  // Check if file exists (need sha for update)
+  let sha = undefined;
+  const check = await ghFetch(`/repos/${username}/${repo}/contents/${path}`, token);
+  if (check.ok) {
+    const data = await check.json();
+    sha = data.sha;
+  }
+
+  // ArrayBuffer → base64
+  const bytes = new Uint8Array(arrayBuffer);
+  let binary = '';
+  for (let i = 0; i < bytes.length; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  const encoded = btoa(binary);
+
+  const res = await ghFetch(`/repos/${username}/${repo}/contents/${path}`, token, {
+    method: 'PUT',
+    body: JSON.stringify({
+      message: message || `upload ${path}`,
+      content: encoded,
+      ...(sha ? { sha } : {}),
+    }),
+  });
+
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(`上传文件失败: ${err.message}`);
+  }
+  return true;
+}
+
 /** Read JSON file, returns parsed object or null */
 async function readJson(token, username, path) {
   const file = await readFile(token, username, path);

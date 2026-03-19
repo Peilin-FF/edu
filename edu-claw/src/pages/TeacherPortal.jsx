@@ -4,6 +4,8 @@ import MindMap from '../components/MindMap';
 import NodeDetailPanel from '../components/NodeDetailPanel';
 import ClassReport from '../components/ClassReport';
 import MasteryLegend from '../components/MasteryLegend';
+import SubmissionView from '../components/assignment/SubmissionView';
+import TeacherChatBubble from '../components/teacher-chat/TeacherChatBubble';
 import { collectNodeNames, computeStudentMastery, computeClassMastery } from '../utils/masteryCalculator';
 
 export default function TeacherPortal() {
@@ -14,6 +16,7 @@ export default function TeacherPortal() {
   const [tree, setTree] = useState(null);
   const [classMastery, setClassMastery] = useState(null);
   const [allStudents, setAllStudents] = useState([]);
+  const [studentRoster, setStudentRoster] = useState([]); // full roster with class info
   const [selectedNode, setSelectedNode] = useState(null);
   const [summary, setSummary] = useState(null);
   const [weakOnly, setWeakOnly] = useState(false);
@@ -39,6 +42,9 @@ export default function TeacherPortal() {
       } else {
         setClassName('全部班级');
       }
+
+      // Save full roster for submission view
+      setStudentRoster(students.map(s => ({ '学生ID': s.id, '姓名': s.name, class: s.class })));
 
       // Only load students that have data files
       const studentsWithData = students.filter(s => s.file);
@@ -89,6 +95,9 @@ export default function TeacherPortal() {
             <button className={`tab-btn ${tab === 'report' ? 'active' : ''}`} onClick={() => setTab('report')}>
               班级报告
             </button>
+            <button className={`tab-btn ${tab === 'assignments' ? 'active' : ''}`} onClick={() => setTab('assignments')}>
+              作业提交
+            </button>
           </div>
           {tab === 'graph' && (
             <button className={`switch-btn ${weakOnly ? 'active' : ''}`} onClick={() => setWeakOnly(v => !v)}>
@@ -97,7 +106,7 @@ export default function TeacherPortal() {
           )}
         </div>
         <div className="header-center">
-          <h1 className="title">{className} — {tab === 'graph' ? '知识掌握全览' : '学习诊断报告'}</h1>
+          <h1 className="title">{className} — {tab === 'graph' ? '知识掌握全览' : tab === 'report' ? '学习诊断报告' : '作业提交情况'}</h1>
           {summary && (
             <div className="subtitle">
               已有数据：{summary.studentCount}/{summary.totalEnrolled}人 | 均分：{summary.avgScore}分 |
@@ -108,7 +117,7 @@ export default function TeacherPortal() {
         {tab === 'graph' && <MasteryLegend teacher />}
       </header>
 
-      {tab === 'graph' ? (
+      {tab === 'graph' && (
         <div className="chart-container">
           {tree && classMastery ? (
             <MindMap data={tree} masteryMap={classMastery} mode="teacher" onNodeClick={handleNodeClick} weakOnly={weakOnly} />
@@ -116,7 +125,9 @@ export default function TeacherPortal() {
             <div className="loading">加载中...</div>
           )}
         </div>
-      ) : (
+      )}
+
+      {tab === 'report' && (
         <div className="report-container">
           {allStudents.length > 0 && classMastery ? (
             <ClassReport students={allStudents} classMastery={classMastery} />
@@ -126,9 +137,22 @@ export default function TeacherPortal() {
         </div>
       )}
 
+      {tab === 'assignments' && (
+        <div className="report-container">
+          <SubmissionView courseId={courseId} students={studentRoster} studentsWithData={allStudents.map(s => s['学生ID'])} />
+        </div>
+      )}
+
       {selectedNode && (
         <NodeDetailPanel node={selectedNode} onClose={() => setSelectedNode(null)} />
       )}
+
+      <TeacherChatBubble
+        classMastery={classMastery}
+        allStudents={allStudents}
+        studentRoster={studentRoster}
+        courseId={courseId}
+      />
     </div>
   );
 }
