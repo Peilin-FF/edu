@@ -273,6 +273,7 @@ npm run dev
 ---
 
 ## 致谢
+Ideas源于一个理念：Openclaw比LLM更懂你！完成工作期间参考了以下优秀工作：
 
 - [OpenClaw](https://github.com/anthropics/openclaw) — Agent 框架与 Skills 系统
 - [gitagent](https://github.com/anthropics/gitagent) — Git-Based Memory 设计理念
