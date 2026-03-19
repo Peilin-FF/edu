@@ -17,9 +17,9 @@ export default defineConfig(({ mode }) => {
       host: true,
       proxy: {
         '/api/chat': {
-          target: 'https://api-gateway.glm.ai',
+          target: env.LLM_BASE_URL?.replace(/\/v1$/, '') || 'https://api-gateway.glm.ai',
           changeOrigin: true,
-          rewrite: (path) => '/v1/chat/completions',
+          rewrite: () => '/v1/chat/completions',
           configure: (proxy) => {
             proxy.on('proxyReq', (proxyReq) => {
               proxyReq.setHeader('Authorization', `Bearer ${env.LLM_API_KEY}`)
@@ -27,6 +27,9 @@ export default defineConfig(({ mode }) => {
           },
         },
       },
+    },
+    define: {
+      __LLM_MODEL__: JSON.stringify(env.LLM_MODEL || 'gpt-4o-mini'),
     },
   }
 })

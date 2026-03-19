@@ -2,6 +2,20 @@
 
 > 基于 OpenClaw 的教育智能体系统，融合知识图谱、AI 批改、个性化陪伴和 Git-Based Memory 安全存储
 
+---
+
+### 测试账号（评委体验用）
+
+| 学号 | 姓名 | 密码 | 说明 |
+|------|------|------|------|
+| 1840101020 | 牛子健 | 1234 | 有完整考试数据，可体验全部功能 |
+| 1840301001 | 杨文聪 | 1234 | 有完整考试数据 |
+| 1840301053 | 刘于搏 | 1234 | 有完整考试数据 |
+
+登录后选择课程「传感器原理与应用」进入学习。
+
+---
+
 ## 项目概览
 
 EduClaw 是一个面向高等院校的 AI 教育平台，围绕**个性化**和**陪伴性**两大核心理念，为学生提供从错题分析、知识讲解到互动练习的全链路学习体验，为教师提供班级学情分析和教学管理工具。
@@ -225,11 +239,12 @@ npm install
 创建 `.env` 文件：
 
 ```bash
-LLM_API_KEY=你的LLM_API_KEY          # LLM API Key
-LLM_BASE_URL=你的API地址              # OpenAI 兼容 API 地址
-YOUDAO_APP_KEY=你的有道AppKey          # 有道 TTS
-YOUDAO_APP_SECRET=你的有道AppSecret
-MINERU_TOKEN=你的MinerU_JWT_Token      # MinerU PDF 解析
+LLM_API_KEY=你的API密钥               # LLM API Key
+LLM_BASE_URL=你的API地址/v1            # OpenAI 兼容 API 地址
+LLM_MODEL=模型名称                     # 使用的模型（如 gpt-4o-mini）
+YOUDAO_APP_KEY=你的有道AppKey          # 有道 TTS 语音合成
+YOUDAO_APP_SECRET=你的有道AppSecret    # 有道 TTS 密钥
+MINERU_TOKEN=你的MinerU_JWT_Token      # MinerU PDF 文档解析
 ```
 
 ### 启动

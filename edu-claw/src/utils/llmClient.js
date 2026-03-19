@@ -1,3 +1,6 @@
+/* global __LLM_MODEL__ */
+const MODEL = typeof __LLM_MODEL__ !== 'undefined' ? __LLM_MODEL__ : 'gpt-4o-mini';
+
 import { buildSystemPrompt, buildUserPrompt } from './pptPrompt';
 import { buildPracticeSystemPrompt, buildPracticeUserPrompt } from './practicePrompt';
 import { buildSuitabilityPrompt, buildInteractiveHtmlPrompt } from './interactivePrompt';
@@ -7,7 +10,7 @@ export async function generatePptSlides(question) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: 'gemini-3-flash-preview',
+      model: MODEL,
       messages: [
         { role: 'system', content: buildSystemPrompt() },
         { role: 'user', content: buildUserPrompt(question) },
@@ -39,7 +42,7 @@ export async function generatePractice(question) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: 'gemini-3-flash-preview',
+      model: MODEL,
       messages: [
         { role: 'system', content: buildPracticeSystemPrompt() },
         { role: 'user', content: buildPracticeUserPrompt(question) },
@@ -77,7 +80,7 @@ export async function streamChat(messages, onChunk, signal) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: 'gemini-3-flash-preview',
+      model: MODEL,
       messages,
       temperature: 0.7,
       stream: true,
@@ -123,7 +126,7 @@ export async function checkInteractiveSuitability(question) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: 'gemini-3-flash-preview',
+      model: MODEL,
       messages: [
         { role: 'system', content: system },
         { role: 'user', content: user },
@@ -147,7 +150,7 @@ export async function generateInteractiveHtml(question, simulationIdea) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: 'gemini-3-flash-preview',
+      model: MODEL,
       messages: [
         { role: 'system', content: system },
         { role: 'user', content: user },

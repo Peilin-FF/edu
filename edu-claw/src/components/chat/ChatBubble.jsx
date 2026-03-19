@@ -121,7 +121,10 @@ export default function ChatBubble({ studentName, wrongQuestions, masteryMap, kn
 
     // Use sendBeacon-compatible approach: fire and forget
     const { token: t, username: u } = getGithubConfig();
-    saveChatSummary(t, u, fullContent).catch(() => {});
+    console.log('[Chat] Saving chat to GitHub...', `messages: ${messages.length}, path: courses/${localStorage.getItem('edu_current_course') || ''}/chat-summary.md`);
+    saveChatSummary(t, u, fullContent)
+      .then(() => console.log('[Chat] Chat saved to GitHub!'))
+      .catch((e) => console.error('[Chat] Failed to save chat:', e.message));
   }, [messages]);
 
   // Save on page close / refresh
