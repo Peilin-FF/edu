@@ -9,7 +9,7 @@ EduClaw 是一个面向高等院校的 AI 教育平台，围绕**个性化**和*
 ### 技术栈
 
 - **前端**：React 19 + Vite 8 + ECharts（知识图谱可视化）
-- **AI 模型**：Gemini 3 Flash Preview（通过 OpenAI 兼容 API）
+- **AI 模型**：大语言模型（通过 OpenAI 兼容 API 接入）
 - **语音合成**：有道云 TTS API（真人语音）
 - **文档解析**：MinerU VLM（PDF → 结构化数据）
 - **数据存储**：Git-Based Memory（GitHub 私有仓库，借鉴 gitagent 项目）
@@ -225,7 +225,8 @@ npm install
 创建 `.env` 文件：
 
 ```bash
-LLM_API_KEY=你的LLM_API_KEY          # OpenAI 兼容 API
+LLM_API_KEY=你的LLM_API_KEY          # LLM API Key
+LLM_BASE_URL=你的API地址              # OpenAI 兼容 API 地址
 YOUDAO_APP_KEY=你的有道AppKey          # 有道 TTS
 YOUDAO_APP_SECRET=你的有道AppSecret
 MINERU_TOKEN=你的MinerU_JWT_Token      # MinerU PDF 解析
