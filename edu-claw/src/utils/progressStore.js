@@ -1,7 +1,9 @@
 /**
  * Learning progress & achievement system.
- * Persists to localStorage per student.
+ * Persists to localStorage (instant) + GitHub (debounced sync).
  */
+
+import { scheduleSyncToGithub, syncFromGithub as ghPull } from './githubStore';
 
 const STORAGE_KEY = 'edu_progress';
 
@@ -37,7 +39,14 @@ function updateStudentData(studentId, updater) {
   const updated = updater(data);
   all[studentId] = updated;
   saveAll(all);
+  // Trigger async GitHub sync (debounced, non-blocking)
+  scheduleSyncToGithub(studentId);
   return updated;
+}
+
+/** Pull latest data from GitHub into localStorage */
+export async function pullFromGithub(studentId) {
+  return ghPull(studentId);
 }
 
 // ===== Public API =====

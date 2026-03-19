@@ -1,6 +1,11 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { streamChat } from '../../utils/llmClient';
-import { buildChatSystemPrompt } from '../../utils/chatPrompt';
+import { buildAgentSystemPrompt } from '../../utils/chatPrompt';
+import {
+  isGithubConnected, getGithubConfig,
+  loadKnowledgeMastery, loadWrongQuestions, loadProgress, loadChatSummary,
+  saveChatSummary,
+} from '../../utils/githubStore';
 import './Chat.css';
 
 export default function ChatBubble({ studentName, wrongQuestions, masteryMap, knowledgeTree }) {
@@ -9,6 +14,9 @@ export default function ChatBubble({ studentName, wrongQuestions, masteryMap, kn
   const [input, setInput] = useState('');
   const [streaming, setStreaming] = useState(false);
   const [hasNewMsg, setHasNewMsg] = useState(false);
+  // GitHub data fetched via skills
+  const [githubData, setGithubData] = useState(null);
+  const [chatHistory, setChatHistory] = useState('');
   // Position state (default: bottom-left)
   const [pos, setPos] = useState({ x: 24, y: window.innerHeight - 80 });
   const [dragging, setDragging] = useState(false);
@@ -17,6 +25,7 @@ export default function ChatBubble({ studentName, wrongQuestions, masteryMap, kn
   const bodyRef = useRef(null);
   const abortRef = useRef(null);
   const greetedRef = useRef(false);
+  const msgCountAtOpen = useRef(0);
 
   // --- Drag logic ---
   const onPointerDown = useCallback((e) => {
@@ -43,21 +52,81 @@ export default function ChatBubble({ studentName, wrongQuestions, masteryMap, kn
     };
   }, [dragging]);
 
-  // Auto-greet on first open
+  // Load GitHub data when chat opens (skills: knowledge-graph, wrong-questions, practice-history, chat-memory)
+  useEffect(() => {
+    if (!open) return;
+    if (!isGithubConnected()) {
+      // Fallback: use props data directly (no GitHub)
+      return;
+    }
+
+    const { token, username } = getGithubConfig();
+    (async () => {
+      try {
+        const [mastery, wrongs, progress, history] = await Promise.allSettled([
+          loadKnowledgeMastery(token, username),
+          loadWrongQuestions(token, username),
+          loadProgress(token, username),
+          loadChatSummary(token, username),
+        ]);
+
+        setGithubData({
+          knowledgeMastery: mastery.status === 'fulfilled' ? mastery.value : null,
+          wrongQuestions: wrongs.status === 'fulfilled' ? wrongs.value : null,
+          progress: progress.status === 'fulfilled' ? progress.value : null,
+        });
+
+        if (history.status === 'fulfilled' && history.value) {
+          setChatHistory(history.value);
+        }
+      } catch (e) {
+        console.warn('[Agent] Failed to load GitHub data:', e.message);
+      }
+    })();
+  }, [open]);
+
+  // Auto-greet on first open (with memory awareness)
   useEffect(() => {
     if (open && !greetedRef.current && studentName) {
       greetedRef.current = true;
-      const greeting = `${studentName}同学你好！我是小智老师，你的 AI 学习伙伴。有什么不懂的知识点或者想聊的，随时跟我说！`;
+      msgCountAtOpen.current = 0;
+      const hasHistory = !!chatHistory;
+      const greeting = hasHistory
+        ? `${studentName}同学，又见面了！我看了一下我们上次的对话记录，有什么想继续聊的吗？`
+        : `${studentName}同学你好！我是小智老师，你的 AI 学习伙伴。我已经读取了你在 GitHub 上的学习数据，随时可以帮你分析错题和知识点！`;
       setMessages([{ role: 'assistant', content: greeting }]);
     }
-  }, [open, studentName]);
+  }, [open, studentName, chatHistory]);
 
-  // Auto-scroll to bottom
+  // Auto-scroll
   useEffect(() => {
-    if (bodyRef.current) {
-      bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
-    }
+    if (bodyRef.current) bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
   }, [messages]);
+
+  // Save chat summary to GitHub when closing (if new messages)
+  const saveSummary = useCallback(async () => {
+    if (!isGithubConnected()) return;
+    const newMsgs = messages.slice(msgCountAtOpen.current);
+    if (newMsgs.length < 2) return; // Need at least 1 Q&A pair
+
+    const { token, username } = getGithubConfig();
+    const today = new Date().toISOString().slice(0, 10);
+
+    // Build summary from new messages
+    const summaryLines = newMsgs
+      .filter((m) => m.content)
+      .map((m) => `- [${m.role === 'user' ? '学生' : '小智'}] ${m.content.substring(0, 100)}${m.content.length > 100 ? '...' : ''}`);
+
+    const newEntry = `\n## ${today}\n${summaryLines.join('\n')}`;
+    const fullSummary = (chatHistory + newEntry).slice(-3000); // Keep last 3000 chars
+
+    try {
+      await saveChatSummary(token, username, fullSummary);
+      console.log('[Agent] Chat summary saved to GitHub');
+    } catch (e) {
+      console.warn('[Agent] Failed to save summary:', e.message);
+    }
+  }, [messages, chatHistory]);
 
   const handleSend = useCallback(async () => {
     const text = input.trim();
@@ -69,11 +138,20 @@ export default function ChatBubble({ studentName, wrongQuestions, masteryMap, kn
     setInput('');
     setStreaming(true);
 
-    const systemPrompt = buildChatSystemPrompt({
+    // Build agent system prompt with GitHub data
+    const systemPrompt = buildAgentSystemPrompt({
       studentName,
-      wrongQuestions,
-      masteryMap,
-      knowledgeTree,
+      chatHistory,
+      githubData: githubData || {
+        // Fallback to props if GitHub not connected
+        knowledgeMastery: masteryMap ? Object.fromEntries(
+          Array.from(masteryMap.entries()).map(([k, v]) => [k, {
+            mastery: v.mastery, earned: v.earned, possible: v.possible, wrongCount: v.wrongQuestions.length,
+          }])
+        ) : null,
+        wrongQuestions,
+        progress: null,
+      },
     });
 
     const apiMessages = [
@@ -113,7 +191,7 @@ export default function ChatBubble({ studentName, wrongQuestions, masteryMap, kn
       setStreaming(false);
       abortRef.current = null;
     }
-  }, [input, messages, streaming, studentName, wrongQuestions, masteryMap, knowledgeTree]);
+  }, [input, messages, streaming, studentName, chatHistory, githubData, wrongQuestions, masteryMap]);
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -123,23 +201,24 @@ export default function ChatBubble({ studentName, wrongQuestions, masteryMap, kn
   };
 
   const toggleOpen = () => {
-    // Only toggle if not a drag
     if (didDrag.current) return;
+    const wasOpen = open;
     setOpen((v) => !v);
     setHasNewMsg(false);
+    // Save summary when closing
+    if (wasOpen) saveSummary();
   };
 
   const suggestions = [
     '帮我梳理一下这门课的知识脉络',
     '我哪些知识点最薄弱？该怎么补？',
     '帮我分析一下我的错题有什么共性',
+    '我最近学习进步了吗？',
   ];
 
-  const handleSuggestion = (text) => {
-    setInput(text);
-  };
+  const handleSuggestion = (text) => setInput(text);
 
-  // Calculate panel position relative to FAB
+  // Panel position relative to FAB
   const panelOnLeft = pos.x > window.innerWidth / 2;
   const panelOnTop = pos.y > window.innerHeight / 2;
   const panelStyle = {
@@ -149,9 +228,10 @@ export default function ChatBubble({ studentName, wrongQuestions, masteryMap, kn
       : { top: pos.y + 68 }),
   };
 
+  const githubBadge = isGithubConnected();
+
   return (
     <>
-      {/* Draggable floating bubble */}
       <button
         className={`chat-fab ${hasNewMsg ? 'chat-fab--new' : ''} ${dragging ? 'chat-fab--dragging' : ''}`}
         style={{ left: pos.x, top: pos.y }}
@@ -161,14 +241,18 @@ export default function ChatBubble({ studentName, wrongQuestions, masteryMap, kn
         {open ? '\u2715' : '\uD83D\uDCAC'}
       </button>
 
-      {/* Chat panel */}
       {open && (
         <div className="chat-panel" style={panelStyle}>
           <div className="chat-panel-header">
             <div className="chat-panel-avatar">&#x1F9D1;&#x200D;&#x1F3EB;</div>
             <div>
-              <div className="chat-panel-name">小智老师</div>
-              <div className="chat-panel-status">AI 学习伙伴 · 随时为你答疑</div>
+              <div className="chat-panel-name">
+                小智老师
+                {githubBadge && <span className="chat-agent-badge">Agent</span>}
+              </div>
+              <div className="chat-panel-status">
+                {githubBadge ? 'OpenClaw Agent · 已连接 GitHub 记忆' : 'AI 学习伙伴 · 随时为你答疑'}
+              </div>
             </div>
           </div>
 

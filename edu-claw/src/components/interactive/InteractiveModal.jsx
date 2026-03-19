@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { checkInteractiveSuitability, generateInteractiveHtml } from '../../utils/llmClient';
+import { cachedGenerate } from '../../utils/genCache';
 import './Interactive.css';
 
 export default function InteractiveModal({ question, onClose }) {
@@ -12,17 +13,27 @@ export default function InteractiveModal({ question, onClose }) {
     setPhase('checking');
     setError('');
     try {
-      const result = await checkInteractiveSuitability(question);
-      setSuitability(result);
+      // Cache the full result (suitability + html) as one unit
+      const { data: cached } = await cachedGenerate(
+        'interactive', question,
+        async () => {
+          const result = await checkInteractiveSuitability(question);
+          if (!result.suitable) {
+            return { suitable: false, reason: result.reason };
+          }
+          const htmlContent = await generateInteractiveHtml(question, result.simulationIdea);
+          return { suitable: true, simulationIdea: result.simulationIdea, html: htmlContent };
+        }
+      );
 
-      if (!result.suitable) {
+      if (!cached.suitable) {
+        setSuitability(cached);
         setPhase('unsuitable');
         return;
       }
 
-      setPhase('generating');
-      const htmlContent = await generateInteractiveHtml(question, result.simulationIdea);
-      setHtml(htmlContent);
+      setSuitability(cached);
+      setHtml(cached.html);
       setPhase('ready');
     } catch (e) {
       setError(e.message);

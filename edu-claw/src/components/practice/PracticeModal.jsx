@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { generatePractice } from '../../utils/llmClient';
 import { recordPractice } from '../../utils/progressStore';
+import { cachedGenerate, clearCacheEntry } from '../../utils/genCache';
 import PracticeQuestion from './PracticeQuestion';
 import './Practice.css';
 
@@ -12,8 +13,9 @@ export default function PracticeModal({ question, studentId, onClose, onNewAchie
   const [answers, setAnswers] = useState({});     // { questionId: userAnswer }
   const [submitted, setSubmitted] = useState({});  // { questionId: true }
   const [score, setScore] = useState(null);        // final score after all submitted
+  const [fromCache, setFromCache] = useState(false);
 
-  const fetchPractice = useCallback(async () => {
+  const fetchPractice = useCallback(async (forceNew = false) => {
     setLoading(true);
     setError(null);
     setAnswers({});
@@ -21,9 +23,14 @@ export default function PracticeModal({ question, studentId, onClose, onNewAchie
     setScore(null);
     setCurrentIdx(0);
     recordedRef.current = false;
+    setFromCache(false);
     try {
-      const result = await generatePractice(question);
+      if (forceNew) clearCacheEntry('practice', question);
+      const { data: result, fromCache: cached } = await cachedGenerate(
+        'practice', question, () => generatePractice(question)
+      );
       setData(result);
+      setFromCache(cached);
     } catch (e) {
       setError(e.message);
     } finally {
@@ -157,7 +164,7 @@ export default function PracticeModal({ question, studentId, onClose, onNewAchie
                     : `答对 ${score}/${totalQ} 题，${score >= 2 ? '掌握得不错，再巩固一下！' : '别灰心，回顾讲解后再试试！'}`
                   }
                 </div>
-                <button className="prac-retry-btn" onClick={fetchPractice}>再练一组</button>
+                <button className="prac-retry-btn" onClick={() => fetchPractice(true)}>再练一组</button>
               </div>
             )}
           </>

@@ -8,7 +8,7 @@ export default function LandingPage() {
         <p className="landing-subtitle">物联网技术及应用 - 个性化学习分析平台</p>
       </div>
       <div className="portal-cards">
-        <Link to="/student" className="portal-card student-card">
+        <Link to="/login" className="portal-card student-card">
           <div className="portal-icon">🎓</div>
           <h2>学生端</h2>
           <p>查看个人知识掌握情况，追踪薄弱知识点，回顾错题解析</p>

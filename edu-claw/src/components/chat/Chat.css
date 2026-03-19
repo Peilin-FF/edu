@@ -43,7 +43,11 @@
   color: white;
 }
 .chat-panel-avatar { font-size: 28px; }
-.chat-panel-name { font-size: 15px; font-weight: 700; }
+.chat-panel-name { font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+.chat-agent-badge {
+  font-size: 9px; padding: 1px 6px; border-radius: 4px;
+  background: rgba(255,255,255,0.25); font-weight: 600; letter-spacing: 0.5px;
+}
 .chat-panel-status { font-size: 11px; opacity: 0.8; }
 
 /* Body */

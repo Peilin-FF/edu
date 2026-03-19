@@ -272,3 +272,51 @@ body {
 .report-footer {
   text-align: center; color: #999; font-size: 12px; padding: 20px 0;
 }
+
+/* ===== Sync Status ===== */
+.sync-status {
+  font-size: 11px; padding: 2px 8px; border-radius: 10px; white-space: nowrap;
+}
+.sync-status--off { color: rgba(255,255,255,0.6); }
+.sync-status--syncing { color: rgba(255,255,255,0.8); animation: syncPulse 1s ease infinite; }
+.sync-status--ok { color: #a7f3d0; }
+@keyframes syncPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+/* ===== Login Page ===== */
+.login-page {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.login-card {
+  background: white; border-radius: 20px; padding: 40px 36px;
+  width: 380px; max-width: 90vw;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+  text-align: center;
+}
+.login-logo { font-size: 48px; margin-bottom: 8px; }
+.login-title { font-size: 24px; font-weight: 800; color: #2c3e50; margin: 0; }
+.login-subtitle { font-size: 14px; color: #999; margin: 4px 0 24px; }
+
+.login-tabs { display: flex; gap: 4px; margin-bottom: 20px; background: #f0f0f0; border-radius: 10px; padding: 3px; }
+.login-tab {
+  flex: 1; padding: 8px; border: none; background: none; border-radius: 8px;
+  font-size: 14px; font-weight: 600; color: #999; cursor: pointer;
+}
+.login-tab.active { background: white; color: #5470c6; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+
+.login-form { display: flex; flex-direction: column; gap: 12px; }
+.login-input {
+  padding: 12px 16px; border: 2px solid #e8e8e8; border-radius: 10px;
+  font-size: 15px; outline: none; font-family: inherit;
+}
+.login-input:focus { border-color: #5470c6; }
+.login-select { color: #555; }
+
+.login-error { color: #dc2626; font-size: 13px; margin: 0; text-align: left; }
+.login-btn {
+  padding: 12px; background: linear-gradient(135deg, #5470c6, #3ba272);
+  color: white; border: none; border-radius: 10px; font-size: 16px;
+  font-weight: 700; cursor: pointer; margin-top: 4px;
+}
+.login-btn:hover { opacity: 0.9; }
+.login-hint { font-size: 12px; color: #aaa; margin: 16px 0 0; }

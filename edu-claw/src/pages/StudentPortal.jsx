@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import MindMap from '../components/MindMap';
-import StudentSelector from '../components/StudentSelector';
 import WeakPointDrawer from '../components/WeakPointDrawer';
 import MasteryLegend from '../components/MasteryLegend';
 import PptModal from '../components/ppt/PptModal';
@@ -10,10 +9,14 @@ import ChatBubble from '../components/chat/ChatBubble';
 import ProgressPanel from '../components/progress/ProgressPanel';
 import AchievementToast from '../components/progress/AchievementToast';
 import InteractiveModal from '../components/interactive/InteractiveModal';
-import { recordPptView, recordChat, getProgress } from '../utils/progressStore';
+import SyncStatus from '../components/SyncStatus';
+import { recordPptView, getProgress, pullFromGithub } from '../utils/progressStore';
+import { isGithubConnected, saveFullContext } from '../utils/githubStore';
+import { getCurrentAccount, logout } from '../utils/accountStore';
 import { collectNodeNames, computeStudentMastery } from '../utils/masteryCalculator';
 
 export default function StudentPortal() {
+  const navigate = useNavigate();
   const [tree, setTree] = useState(null);
   const [student, setStudent] = useState(null);
   const [masteryMap, setMasteryMap] = useState(null);
@@ -24,22 +27,40 @@ export default function StudentPortal() {
   const [interactiveQuestion, setInteractiveQuestion] = useState(null);
   const [showProgress, setShowProgress] = useState(false);
   const [toastQueue, setToastQueue] = useState([]);
+  const [syncing, setSyncing] = useState(false);
 
+  // Check login & load data
   useEffect(() => {
-    fetch('/data/knowledge.json').then(r => r.json()).then(setTree);
-  }, []);
-
-  const handleSelectStudent = useCallback(async (file) => {
-    const res = await fetch(`/data/students/${file}`);
-    const data = await res.json();
-    setStudent(data);
-    if (tree) {
-      const names = collectNodeNames(tree);
-      const mastery = computeStudentMastery(data, names);
-      setMasteryMap(mastery);
+    const account = getCurrentAccount();
+    if (!account) {
+      navigate('/login');
+      return;
     }
-    setSelectedNode(null);
-  }, [tree]);
+
+    // Load knowledge tree + student data in parallel
+    Promise.all([
+      fetch('/data/knowledge.json').then((r) => r.json()),
+      fetch(`/data/students/${account.file}`).then((r) => r.json()),
+    ]).then(([treeData, studentData]) => {
+      setTree(treeData);
+      setStudent(studentData);
+
+      const names = collectNodeNames(treeData);
+      const mastery = computeStudentMastery(studentData, names);
+      setMasteryMap(mastery);
+
+      // Sync to GitHub
+      const sid = studentData['学生ID'] || studentData['姓名'];
+      if (isGithubConnected()) {
+        setSyncing(true);
+        pullFromGithub(sid).finally(() => setSyncing(false));
+        const wrongQs = Array.from(mastery.values()).flatMap((v) => v.wrongQuestions);
+        saveFullContext(sid, { student: studentData, masteryMap: mastery, wrongQuestions: wrongQs }).catch(() => {});
+      }
+    });
+  }, [navigate]);
+
+  const studentId = student?.['学生ID'] || student?.['姓名'];
 
   const handleNodeClick = useCallback((nodeData) => {
     if (!masteryMap) return;
@@ -50,38 +71,29 @@ export default function StudentPortal() {
     }
   }, [masteryMap]);
 
-  const studentId = student?.['学生ID'] || student?.['姓名'];
-
-  // Record PPT view
   const handlePptRequest = (q) => {
     setPptQuestion(q);
-    if (studentId && q['知识点']) {
-      recordPptView(studentId, q['知识点']);
-    }
+    if (studentId && q['知识点']) recordPptView(studentId, q['知识点']);
   };
 
-  // Handle new achievements from practice
-  const handleNewAchievements = (newAchs) => {
-    setToastQueue((prev) => [...prev, ...newAchs]);
+  const handleNewAchievements = (newAchs) => setToastQueue((prev) => [...prev, ...newAchs]);
+  const handleToastDone = () => setToastQueue((prev) => prev.slice(1));
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
   };
 
-  const handleToastDone = () => {
-    setToastQueue((prev) => prev.slice(1));
-  };
-
-  // Get streak for display
   const progress = studentId ? getProgress(studentId) : null;
 
-  if (!student) {
+  // Loading state
+  if (!student || !tree) {
     return (
       <div className="app">
         <header className="header">
-          <Link to="/" className="back-link">← 返回首页</Link>
-          <h1 className="title">学生端 - 选择身份</h1>
+          <h1 className="title">加载中...</h1>
         </header>
-        <div className="selector-container">
-          <StudentSelector onSelect={handleSelectStudent} />
-        </div>
+        <div className="loading">正在加载学习数据...</div>
       </div>
     );
   }
@@ -100,16 +112,16 @@ export default function StudentPortal() {
         <div className="header-left">
           <Link to="/" className="back-link">← 首页</Link>
           <span className="header-sep">|</span>
-          <button className="switch-btn" onClick={() => { setStudent(null); setMasteryMap(null); }}>
-            切换学生
-          </button>
-          <button className={`switch-btn ${weakOnly ? 'active' : ''}`} onClick={() => setWeakOnly(v => !v)}>
+          <button className="switch-btn" onClick={handleLogout}>退出登录</button>
+          <button className={`switch-btn ${weakOnly ? 'active' : ''}`} onClick={() => setWeakOnly((v) => !v)}>
             {weakOnly ? '查看全部' : '只看未掌握'}
           </button>
           <button className="progress-btn" onClick={() => setShowProgress(true)}>
             {progress?.streak > 0 && <span className="streak-fire">{'\uD83D\uDD25'}</span>}
             学习进度
           </button>
+          <Link to="/settings" className="switch-btn">设置</Link>
+          <SyncStatus syncing={syncing} />
         </div>
         <div className="header-center">
           <h1 className="title">{student['姓名']} 的知识图谱</h1>
@@ -122,15 +134,13 @@ export default function StudentPortal() {
       </header>
 
       <div className="chart-container">
-        {tree && (
-          <MindMap
-            data={tree}
-            masteryMap={masteryMap}
-            mode="student"
-            onNodeClick={handleNodeClick}
-            weakOnly={weakOnly}
-          />
-        )}
+        <MindMap
+          data={tree}
+          masteryMap={masteryMap}
+          mode="student"
+          onNodeClick={handleNodeClick}
+          weakOnly={weakOnly}
+        />
       </div>
 
       {selectedNode && (
@@ -144,10 +154,7 @@ export default function StudentPortal() {
       )}
 
       {pptQuestion && (
-        <PptModal
-          question={pptQuestion}
-          onClose={() => setPptQuestion(null)}
-        />
+        <PptModal question={pptQuestion} onClose={() => setPptQuestion(null)} />
       )}
 
       {practiceQuestion && (
@@ -160,23 +167,14 @@ export default function StudentPortal() {
       )}
 
       {interactiveQuestion && (
-        <InteractiveModal
-          question={interactiveQuestion}
-          onClose={() => setInteractiveQuestion(null)}
-        />
+        <InteractiveModal question={interactiveQuestion} onClose={() => setInteractiveQuestion(null)} />
       )}
 
       {showProgress && (
-        <ProgressPanel
-          studentId={studentId}
-          onClose={() => setShowProgress(false)}
-        />
+        <ProgressPanel studentId={studentId} onClose={() => setShowProgress(false)} />
       )}
 
-      <AchievementToast
-        achievement={toastQueue[0] || null}
-        onDone={handleToastDone}
-      />
+      <AchievementToast achievement={toastQueue[0] || null} onDone={handleToastDone} />
 
       <ChatBubble
         studentName={student['姓名']}
