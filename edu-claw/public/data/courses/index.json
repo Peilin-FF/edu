@@ -1,0 +1,14 @@
+{
+  "courses": [
+    {
+      "id": "sensor",
+      "name": "传感器原理与应用",
+      "nameEn": "Sensor Principles and Applications",
+      "cover": "/data/courses/sensor/cover.jpeg",
+      "author": "刘利秋 主编 / 卢艳军 徐涛 副主编",
+      "publisher": "清华大学出版社",
+      "description": "高等院校机械类专业教材，汇集典型工程案例，注重实际工程应用",
+      "dataPath": "/data/courses/sensor"
+    }
+  ]
+}

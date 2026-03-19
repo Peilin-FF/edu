@@ -28,7 +28,7 @@ export default function LoginPage() {
       if (github) {
         saveGithubConfig(github.token, github.username, github.avatar);
       }
-      navigate('/student');
+      navigate('/courses');
     }
   }, [navigate]);
 
@@ -45,7 +45,7 @@ export default function LoginPage() {
     if (github) {
       saveGithubConfig(github.token, github.username, github.avatar);
     }
-    navigate('/student');
+    navigate('/courses');
   };
 
   const handleRegister = () => {
@@ -66,7 +66,7 @@ export default function LoginPage() {
     registerAccount(studentId, password, student.name, student.file);
     // Auto login after register
     login(studentId, password);
-    navigate('/student');
+    navigate('/courses');
   };
 
   const handleSubmit = (e) => {

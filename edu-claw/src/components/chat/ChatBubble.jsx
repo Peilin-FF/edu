@@ -103,30 +103,33 @@ export default function ChatBubble({ studentName, wrongQuestions, masteryMap, kn
     if (bodyRef.current) bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
   }, [messages]);
 
-  // Save chat summary to GitHub when closing (if new messages)
-  const saveSummary = useCallback(async () => {
+  // Save full chat history to GitHub
+  const saveChat = useCallback(() => {
     if (!isGithubConnected()) return;
-    const newMsgs = messages.slice(msgCountAtOpen.current);
-    if (newMsgs.length < 2) return; // Need at least 1 Q&A pair
+    if (messages.length <= 1) return; // only greeting, skip
 
     const { token, username } = getGithubConfig();
     const today = new Date().toISOString().slice(0, 10);
 
-    // Build summary from new messages
-    const summaryLines = newMsgs
+    // Full conversation text
+    const lines = messages
       .filter((m) => m.content)
-      .map((m) => `- [${m.role === 'user' ? '学生' : '小智'}] ${m.content.substring(0, 100)}${m.content.length > 100 ? '...' : ''}`);
+      .map((m) => `**${m.role === 'user' ? '学生' : '小智老师'}**：${m.content}`)
+      .join('\n\n');
 
-    const newEntry = `\n## ${today}\n${summaryLines.join('\n')}`;
-    const fullSummary = (chatHistory + newEntry).slice(-3000); // Keep last 3000 chars
+    const fullContent = `# 对话记录\n\n> 最后更新：${today}\n\n${lines}`;
 
-    try {
-      await saveChatSummary(token, username, fullSummary);
-      console.log('[Agent] Chat summary saved to GitHub');
-    } catch (e) {
-      console.warn('[Agent] Failed to save summary:', e.message);
-    }
-  }, [messages, chatHistory]);
+    // Use sendBeacon-compatible approach: fire and forget
+    const { token: t, username: u } = getGithubConfig();
+    saveChatSummary(t, u, fullContent).catch(() => {});
+  }, [messages]);
+
+  // Save on page close / refresh
+  useEffect(() => {
+    const handleBeforeUnload = () => saveChat();
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [saveChat]);
 
   const handleSend = useCallback(async () => {
     const text = input.trim();
@@ -138,20 +141,16 @@ export default function ChatBubble({ studentName, wrongQuestions, masteryMap, kn
     setInput('');
     setStreaming(true);
 
-    // Build agent system prompt with GitHub data
+    // Build system prompt: GitHub data (preferred) + local props (fallback)
     const systemPrompt = buildAgentSystemPrompt({
       studentName,
       chatHistory,
-      githubData: githubData || {
-        // Fallback to props if GitHub not connected
-        knowledgeMastery: masteryMap ? Object.fromEntries(
-          Array.from(masteryMap.entries()).map(([k, v]) => [k, {
-            mastery: v.mastery, earned: v.earned, possible: v.possible, wrongCount: v.wrongQuestions.length,
-          }])
-        ) : null,
-        wrongQuestions,
-        progress: null,
-      },
+      // GitHub data (from skills pull)
+      githubData,
+      // Local fallback data (always available)
+      knowledgeTree,
+      masteryMap,
+      wrongQuestions,
     });
 
     const apiMessages = [
@@ -191,7 +190,7 @@ export default function ChatBubble({ studentName, wrongQuestions, masteryMap, kn
       setStreaming(false);
       abortRef.current = null;
     }
-  }, [input, messages, streaming, studentName, chatHistory, githubData, wrongQuestions, masteryMap]);
+  }, [input, messages, streaming, studentName, chatHistory, githubData, knowledgeTree, wrongQuestions, masteryMap]);
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -206,7 +205,7 @@ export default function ChatBubble({ studentName, wrongQuestions, masteryMap, kn
     setOpen((v) => !v);
     setHasNewMsg(false);
     // Save summary when closing
-    if (wasOpen) saveSummary();
+    if (wasOpen) saveChat();
   };
 
   const suggestions = [

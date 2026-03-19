@@ -172,26 +172,36 @@ export async function saveProgress(token, username, data) {
 
 // --- Chat Summary ---
 export async function loadChatSummary(token, username) {
-  const file = await readFile(token, username, 'chat-summary.md');
+  const courseId = localStorage.getItem('edu_current_course') || '';
+  const path = courseId ? `courses/${courseId}/chat-summary.md` : 'chat-summary.md';
+  const file = await readFile(token, username, path);
   return file?.content || '';
 }
 
 export async function saveChatSummary(token, username, markdown) {
-  return writeFile(token, username, 'chat-summary.md', markdown, '对话记忆更新');
+  const courseId = localStorage.getItem('edu_current_course') || '';
+  const path = courseId ? `courses/${courseId}/chat-summary.md` : 'chat-summary.md';
+  return writeFile(token, username, path, markdown, '更新对话记录');
 }
 
-// --- Knowledge Mastery (知识图谱掌握情况) ---
+// --- Knowledge Mastery (知识图谱掌握情况，按课程隔离) ---
 export async function loadKnowledgeMastery(token, username) {
-  return readJson(token, username, 'knowledge-mastery.json');
+  const courseId = localStorage.getItem('edu_current_course') || '';
+  const path = courseId ? `courses/${courseId}/knowledge-mastery.json` : 'knowledge-mastery.json';
+  return readJson(token, username, path);
 }
 
 export async function saveKnowledgeMastery(token, username, masteryData) {
-  return writeJson(token, username, 'knowledge-mastery.json', masteryData, '知识掌握度更新');
+  const courseId = localStorage.getItem('edu_current_course') || '';
+  const path = courseId ? `courses/${courseId}/knowledge-mastery.json` : 'knowledge-mastery.json';
+  return writeJson(token, username, path, masteryData, '知识掌握度更新');
 }
 
-// --- Wrong Questions (个人错题本) ---
+// --- Wrong Questions (个人错题本，按课程隔离) ---
 export async function loadWrongQuestions(token, username) {
-  return readJson(token, username, 'wrong-questions.json');
+  const courseId = localStorage.getItem('edu_current_course') || '';
+  const path = courseId ? `courses/${courseId}/wrong-questions.json` : 'wrong-questions.json';
+  return readJson(token, username, path);
 }
 
 export async function saveWrongQuestions(token, username, questions) {
@@ -340,45 +350,56 @@ export async function syncFromGithub(studentId) {
   }
 }
 
-/** Save student's full context to GitHub (called on major events) */
-export async function saveFullContext(studentId, { student, masteryMap, wrongQuestions }) {
+/** Save student's full context to GitHub, scoped by course */
+export async function saveFullContext(studentId, { student, masteryMap, wrongQuestions, knowledgeTree, courseId }) {
   const { token, username } = getGithubConfig();
-  if (!token || !username) return;
+  if (!token || !username) {
+    console.warn('[GitHub Sync] No token/username, skip upload');
+    return;
+  }
+
+  const prefix = courseId ? `courses/${courseId}/` : '';
+  console.log('[GitHub Sync] Uploading to', prefix || 'root', '...');
 
   try {
-    // Save profile
+    // 1. Save profile (root level, shared across courses)
     if (student) {
-      await saveProfile(token, username, {
+      await writeJson(token, username, 'profile.json', {
         studentId: student['学生ID'],
         name: student['姓名'],
         examDate: student['作业考试时间'],
         totalScore: student['总分'],
         savedAt: new Date().toISOString(),
-      });
+      }, '个人信息更新');
+      console.log('[GitHub Sync] ✓ profile.json');
     }
 
-    // Save knowledge mastery
-    if (masteryMap) {
-      const mastery = {};
-      for (const [name, data] of masteryMap.entries()) {
-        mastery[name] = {
-          mastery: data.mastery,
-          earned: data.earned,
-          possible: data.possible,
-          wrongCount: data.wrongQuestions.length,
+    // 2. Save knowledge tree + mastery (course-scoped)
+    if (knowledgeTree && masteryMap) {
+      const data = {
+        courseName: knowledgeTree.name,
+        tree: knowledgeTree,
+        mastery: {},
+      };
+      for (const [name, d] of masteryMap.entries()) {
+        data.mastery[name] = {
+          mastery: d.mastery, earned: d.earned, possible: d.possible,
+          wrongCount: d.wrongQuestions.length,
         };
       }
-      await saveKnowledgeMastery(token, username, mastery);
+      await writeJson(token, username, `${prefix}knowledge-mastery.json`, data, `知识掌握度更新 - ${knowledgeTree.name}`);
+      console.log('[GitHub Sync] ✓', `${prefix}knowledge-mastery.json`);
     }
 
-    // Save wrong questions
+    // 3. Save wrong questions (course-scoped)
     if (wrongQuestions && wrongQuestions.length > 0) {
-      await saveWrongQuestions(token, username, wrongQuestions);
+      await writeJson(token, username, `${prefix}wrong-questions.json`, wrongQuestions, `错题本更新 - ${courseId || 'default'}`);
+      console.log('[GitHub Sync] ✓', `${prefix}wrong-questions.json`);
     }
 
-    console.log('[GitHub Sync] Full context saved');
+    console.log('[GitHub Sync] Full context uploaded!');
   } catch (e) {
-    console.warn('[GitHub Sync] Context save failed:', e.message);
+    console.error('[GitHub Sync] Upload FAILED:', e.message);
   }
 }
 

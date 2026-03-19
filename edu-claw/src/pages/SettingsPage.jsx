@@ -40,13 +40,17 @@ export default function SettingsPage() {
       const result = await ensureRepo(token, user.username);
       setRepoStatus(result.created ? 'created' : 'exists');
 
-      // Save to global config
+      // Save to global config (localStorage)
       saveGithubConfig(token, user.username, user.avatar);
 
-      // Also bind to current account
+      // Bind to current account (if logged in)
       const account = getCurrentAccount();
+      console.log('[Settings] Binding GitHub to account:', account?.studentId || 'NOT LOGGED IN');
       if (account) {
         bindGithub(account.studentId, token, user.username, user.avatar);
+        console.log('[Settings] GitHub bound to account', account.studentId);
+      } else {
+        console.warn('[Settings] No account logged in! GitHub saved globally but not bound to account. Please login first.');
       }
 
       setStatus('connected');
@@ -70,7 +74,7 @@ export default function SettingsPage() {
   return (
     <div className="app">
       <header className="header">
-        <Link to="/student" className="back-link">← 返回学习</Link>
+        <Link to="/courses" className="back-link">&larr; 返回课程</Link>
         <h1 className="title">数据安全设置</h1>
       </header>
 

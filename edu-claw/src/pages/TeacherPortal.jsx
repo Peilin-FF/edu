@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import MindMap from '../components/MindMap';
 import NodeDetailPanel from '../components/NodeDetailPanel';
 import ClassReport from '../components/ClassReport';
@@ -7,25 +7,44 @@ import MasteryLegend from '../components/MasteryLegend';
 import { collectNodeNames, computeStudentMastery, computeClassMastery } from '../utils/masteryCalculator';
 
 export default function TeacherPortal() {
+  const { courseId } = useParams();
+  const [searchParams] = useSearchParams();
+  const classFilter = searchParams.get('class'); // null = all classes
+
   const [tree, setTree] = useState(null);
   const [classMastery, setClassMastery] = useState(null);
   const [allStudents, setAllStudents] = useState([]);
   const [selectedNode, setSelectedNode] = useState(null);
   const [summary, setSummary] = useState(null);
   const [weakOnly, setWeakOnly] = useState(false);
-  const [tab, setTab] = useState('graph'); // 'graph' | 'report'
+  const [tab, setTab] = useState('graph');
+  const [className, setClassName] = useState('');
 
   useEffect(() => {
+    const basePath = `/data/courses/${courseId}`;
+
     Promise.all([
-      fetch('/data/knowledge.json').then(r => r.json()),
-      fetch('/data/students/index.json').then(r => r.json()),
+      fetch(`${basePath}/knowledge.json`).then(r => r.json()),
+      fetch(`${basePath}/students/index.json`).then(r => r.json()),
     ]).then(async ([treeData, manifest]) => {
       setTree(treeData);
       const names = collectNodeNames(treeData);
 
-      const studentFiles = manifest.students.map(s => s.file);
+      // Filter students by class if specified
+      let students = manifest.students;
+      if (classFilter) {
+        students = students.filter(s => s.class === classFilter);
+        const cls = manifest.classes?.find(c => c.id === classFilter);
+        setClassName(cls?.name || classFilter);
+      } else {
+        setClassName('全部班级');
+      }
+
+      // Only load students that have data files
+      const studentsWithData = students.filter(s => s.file);
+
       const allData = await Promise.all(
-        studentFiles.map(f => fetch(`/data/students/${f}`).then(r => r.json()))
+        studentsWithData.map(s => fetch(`${basePath}/students/${s.file}`).then(r => r.json()))
       );
       setAllStudents(allData);
 
@@ -39,33 +58,30 @@ export default function TeacherPortal() {
       const cm = computeClassMastery(allMasteries);
       setClassMastery(cm);
 
-      const avgScore = allData.reduce((s, d) => s + (d['总分'] || 0), 0) / allData.length;
+      const avgScore = allData.length > 0
+        ? (allData.reduce((s, d) => s + (d['总分'] || 0), 0) / allData.length).toFixed(1)
+        : '0';
       const weakPoints = Array.from(cm.entries())
         .sort((a, b) => a[1].avgMastery - b[1].avgMastery)
         .slice(0, 5);
 
-      setSummary({
-        studentCount: allData.length,
-        avgScore: avgScore.toFixed(1),
-        weakPoints,
-      });
+      setSummary({ studentCount: allData.length, totalEnrolled: students.length, avgScore, weakPoints });
     });
-  }, []);
+  }, [courseId, classFilter]);
 
   const handleNodeClick = useCallback((nodeData) => {
     if (!classMastery) return;
     const cleanName = nodeData.name.replace(/\s*【.*】$/, '');
     const data = classMastery.get(cleanName);
-    if (data) {
-      setSelectedNode({ name: cleanName, ...data });
-    }
+    if (data) setSelectedNode({ name: cleanName, ...data });
   }, [classMastery]);
 
   return (
     <div className="app">
       <header className="header">
         <div className="header-left">
-          <Link to="/" className="back-link">← 首页</Link>
+          <Link to="/teacher-courses" className="back-link">&larr; 课程</Link>
+          <span className="header-sep">|</span>
           <div className="tab-group">
             <button className={`tab-btn ${tab === 'graph' ? 'active' : ''}`} onClick={() => setTab('graph')}>
               知识图谱
@@ -81,10 +97,10 @@ export default function TeacherPortal() {
           )}
         </div>
         <div className="header-center">
-          <h1 className="title">教师端 - {tab === 'graph' ? '班级知识掌握全览' : '班级学习诊断报告'}</h1>
+          <h1 className="title">{className} — {tab === 'graph' ? '知识掌握全览' : '学习诊断报告'}</h1>
           {summary && (
             <div className="subtitle">
-              学生：{summary.studentCount}人 | 班级均分：{summary.avgScore}分 |
+              已有数据：{summary.studentCount}/{summary.totalEnrolled}人 | 均分：{summary.avgScore}分 |
               最薄弱：{summary.weakPoints.slice(0, 3).map(([n]) => n).join('、')}
             </div>
           )}
@@ -94,16 +110,11 @@ export default function TeacherPortal() {
 
       {tab === 'graph' ? (
         <div className="chart-container">
-          {tree && classMastery && (
-            <MindMap
-              data={tree}
-              masteryMap={classMastery}
-              mode="teacher"
-              onNodeClick={handleNodeClick}
-              weakOnly={weakOnly}
-            />
+          {tree && classMastery ? (
+            <MindMap data={tree} masteryMap={classMastery} mode="teacher" onNodeClick={handleNodeClick} weakOnly={weakOnly} />
+          ) : (
+            <div className="loading">加载中...</div>
           )}
-          {!classMastery && <div className="loading">加载中...</div>}
         </div>
       ) : (
         <div className="report-container">
@@ -116,10 +127,7 @@ export default function TeacherPortal() {
       )}
 
       {selectedNode && (
-        <NodeDetailPanel
-          node={selectedNode}
-          onClose={() => setSelectedNode(null)}
-        />
+        <NodeDetailPanel node={selectedNode} onClose={() => setSelectedNode(null)} />
       )}
     </div>
   );
