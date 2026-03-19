@@ -264,16 +264,6 @@ npm run dev
 
 访问 http://localhost:5173
 
-### 公网访问（评委体验）
-
-```bash
-# 方式一：ngrok
-ngrok http 5173
-
-# 方式二：Cloudflare Tunnel
-cloudflared tunnel --url http://localhost:5173
-```
-
 ---
 
 ## 默认账号
@@ -289,3 +279,5 @@ cloudflared tunnel --url http://localhost:5173
 - [OpenMAIC](https://github.com/OpenMAIC/OpenMAIC) — 互动课堂生成参考
 - [MinerU](https://mineru.net) — PDF 文档智能解析
 - [shadcn/ui](https://ui.shadcn.com) — UI 设计风格参考
+
+Good Job🎉!
