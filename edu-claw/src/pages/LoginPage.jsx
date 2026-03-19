@@ -26,6 +26,10 @@ export default function LoginPage() {
   useEffect(() => {
     const account = getCurrentAccount();
     if (account) {
+      // Clear then restore only this account's GitHub
+      localStorage.removeItem('github_token');
+      localStorage.removeItem('github_username');
+      localStorage.removeItem('github_avatar');
       const accounts = JSON.parse(localStorage.getItem('edu_accounts') || '{}');
       const github = accounts[account.studentId]?.github;
       if (github) {
@@ -42,6 +46,10 @@ export default function LoginPage() {
       setError('学号或密码错误（默认密码：1234）');
       return;
     }
+    // Clear then restore only this account's GitHub
+    localStorage.removeItem('github_token');
+    localStorage.removeItem('github_username');
+    localStorage.removeItem('github_avatar');
     const accounts = JSON.parse(localStorage.getItem('edu_accounts') || '{}');
     const github = accounts[studentId]?.github;
     if (github) {

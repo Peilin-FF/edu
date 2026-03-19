@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "adm-zip": "^0.5.16",
     "echarts": "^6.0.0",
     "echarts-for-react": "^3.0.6",
+    "pinyin-pro": "^3.28.0",
     "pptxgenjs": "^4.0.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",

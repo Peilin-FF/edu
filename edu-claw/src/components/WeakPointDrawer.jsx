@@ -1,3 +1,15 @@
+/** Clean LaTeX symbols from answer text */
+function cleanAnswer(text) {
+  if (!text) return text;
+  return text
+    .replace(/\$\\times\$/g, '×')
+    .replace(/\$\\mathcal\s*\{\s*V\s*\}\$/g, '√')
+    .replace(/\$\\checkmark\$/g, '√')
+    .replace(/\$\\sqrt\{?\}?\$/g, '√')
+    .replace(/\$([^$]*)\$/g, '$1') // strip remaining $...$
+    .trim();
+}
+
 export default function WeakPointDrawer({ node, onClose, onPptRequest, onPracticeRequest, onInteractiveRequest, onDeleteQuestion }) {
   const pct = Math.round(node.mastery * 100);
 
@@ -46,8 +58,8 @@ export default function WeakPointDrawer({ node, onClose, onPptRequest, onPractic
                 </div>
               )}
               <div className="q-answers">
-                <span className="q-stu">你的答案：<b>{q['学生答案']}</b></span>
-                <span className="q-cor">正确答案：<b>{q['正确答案']}</b></span>
+                <span className="q-stu">你的答案：<b>{cleanAnswer(q['学生答案'])}</b></span>
+                <span className="q-cor">正确答案：<b>{cleanAnswer(q['正确答案'])}</b></span>
               </div>
               {q['扣分原因'] && q['扣分原因'] !== '无' && (
                 <div className="q-reason">{q['扣分原因']}</div>

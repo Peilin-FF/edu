@@ -15,6 +15,8 @@
  * └── wrong-questions.json       (个人错题本)
  */
 
+import { pinyin } from 'pinyin-pro';
+
 const API = 'https://api.github.com';
 const REPO_PREFIX = 'edu-memory';
 
@@ -26,7 +28,20 @@ function headers(token) {
   };
 }
 
+/** Convert Chinese name to pinyin for GitHub repo name */
+function nameToPinyin(name) {
+  if (!name) return '';
+  return pinyin(name, { toneType: 'none', type: 'array' }).join('');
+}
+
 function repoName(username) {
+  const studentId = localStorage.getItem('edu_current_student');
+  const studentName = localStorage.getItem('edu_current_student_name');
+  if (studentId && studentName) {
+    const py = nameToPinyin(studentName);
+    return `${REPO_PREFIX}-${py}-${studentId}`;
+  }
+  if (studentId) return `${REPO_PREFIX}-${studentId}`;
   return `${REPO_PREFIX}-${username}`;
 }
 

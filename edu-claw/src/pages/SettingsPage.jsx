@@ -37,6 +37,12 @@ export default function SettingsPage() {
       const user = await validateToken(token);
       setUserInfo(user);
 
+      // Ensure current student is set so repo name uses student ID
+      const account = getCurrentAccount();
+      if (account) {
+        localStorage.setItem('edu_current_student', account.studentId);
+      }
+
       const result = await ensureRepo(token, user.username);
       setRepoStatus(result.created ? 'created' : 'exists');
 
@@ -44,13 +50,9 @@ export default function SettingsPage() {
       saveGithubConfig(token, user.username, user.avatar);
 
       // Bind to current account (if logged in)
-      const account = getCurrentAccount();
       console.log('[Settings] Binding GitHub to account:', account?.studentId || 'NOT LOGGED IN');
       if (account) {
         bindGithub(account.studentId, token, user.username, user.avatar);
-        console.log('[Settings] GitHub bound to account', account.studentId);
-      } else {
-        console.warn('[Settings] No account logged in! GitHub saved globally but not bound to account. Please login first.');
       }
 
       setStatus('connected');

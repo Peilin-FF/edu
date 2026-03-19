@@ -59,9 +59,13 @@ export function getCurrentAccount() {
   return { studentId, name: account.name, file: account.file };
 }
 
-/** Logout */
+/** Logout — also clears global GitHub config */
 export function logout() {
   localStorage.removeItem(CURRENT_KEY);
+  // Clear global GitHub config so next account doesn't inherit it
+  localStorage.removeItem('github_token');
+  localStorage.removeItem('github_username');
+  localStorage.removeItem('github_avatar');
 }
 
 /** Check if an account exists */

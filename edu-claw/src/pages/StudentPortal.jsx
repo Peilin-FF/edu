@@ -13,7 +13,7 @@ import AssignmentPanel from '../components/assignment/AssignmentPanel';
 import NotificationBell from '../components/NotificationBell';
 import SyncStatus from '../components/SyncStatus';
 import { recordPptView, getProgress, pullFromGithub } from '../utils/progressStore';
-import { isGithubConnected, saveFullContext, saveGithubConfig } from '../utils/githubStore';
+import { isGithubConnected, saveFullContext, saveGithubConfig, ensureRepo } from '../utils/githubStore';
 import { getCurrentAccount, logout } from '../utils/accountStore';
 import { collectNodeNames, computeStudentMastery } from '../utils/masteryCalculator';
 
@@ -38,19 +38,22 @@ export default function StudentPortal() {
     const account = getCurrentAccount();
     if (!account) { navigate('/login'); return; }
 
-    // Restore GitHub
+    // Set current student ID FIRST (used by repoName for GitHub isolation)
+    localStorage.setItem('edu_current_student', account.studentId);
+    localStorage.setItem('edu_current_student_name', account.name);
+
+    // Restore GitHub: only from current account's own binding
+    // Always clear global config first to prevent cross-account leakage
+    localStorage.removeItem('github_token');
+    localStorage.removeItem('github_username');
+    localStorage.removeItem('github_avatar');
+
     const accounts = JSON.parse(localStorage.getItem('edu_accounts') || '{}');
     const github = accounts[account.studentId]?.github;
-    const globalToken = localStorage.getItem('github_token');
-    const globalUsername = localStorage.getItem('github_username');
     if (github) {
       saveGithubConfig(github.token, github.username, github.avatar);
-    } else if (globalToken && globalUsername) {
-      const accs = JSON.parse(localStorage.getItem('edu_accounts') || '{}');
-      if (accs[account.studentId]) {
-        accs[account.studentId].github = { token: globalToken, username: globalUsername, avatar: localStorage.getItem('github_avatar') };
-        localStorage.setItem('edu_accounts', JSON.stringify(accs));
-      }
+      // Auto-create repo for this student if it doesn't exist
+      ensureRepo(github.token, github.username).catch(() => {});
     }
 
     // Load course info + knowledge tree + student data (if available)
@@ -233,7 +236,34 @@ export default function StudentPortal() {
 
       {interactiveQuestion && <InteractiveModal question={interactiveQuestion} onClose={() => setInteractiveQuestion(null)} />}
       {showProgress && <ProgressPanel studentId={studentId} onClose={() => setShowProgress(false)} />}
-      {showAssignments && <AssignmentPanel courseId={courseId} studentId={studentId} onClose={() => setShowAssignments(false)} />}
+      {showAssignments && (
+        <AssignmentPanel
+          courseId={courseId}
+          studentId={studentId}
+          studentName={student['姓名']}
+          knowledgeTree={tree}
+          onDataUpdate={(newData) => {
+            console.log('[StudentPortal] onDataUpdate called, questions:', newData['题目列表']?.length, 'score:', newData['总分']);
+            setStudent(newData);
+            const names = collectNodeNames(tree);
+            const mastery = computeStudentMastery(newData, names);
+            setMasteryMap(mastery);
+
+            // Also sync updated data to GitHub (knowledge-mastery + wrong-questions)
+            if (isGithubConnected()) {
+              const wrongQs = Array.from(mastery.values()).flatMap((v) => v.wrongQuestions);
+              saveFullContext(newData['学生ID'] || newData['姓名'], {
+                student: newData,
+                masteryMap: mastery,
+                wrongQuestions: wrongQs,
+                knowledgeTree: tree,
+                courseId,
+              }).catch((e) => console.error('[Upload after grading]', e));
+            }
+          }}
+          onClose={() => setShowAssignments(false)}
+        />
+      )}
       <AchievementToast achievement={toastQueue[0] || null} onDone={handleToastDone} />
 
       <ChatBubble

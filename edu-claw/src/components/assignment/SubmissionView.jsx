@@ -3,7 +3,9 @@ import './Assignment.css';
 
 /**
  * Teacher view: show assignment submission status.
- * studentsWithData = IDs of students who have submitted exam data (have JSON files).
+ * Checks two sources:
+ * 1. studentsWithData — students who have graded JSON files (static data)
+ * 2. localStorage submissions — students who uploaded PDF via the assignment panel
  */
 export default function SubmissionView({ courseId, students, studentsWithData }) {
   const [assignments, setAssignments] = useState([]);
@@ -19,10 +21,29 @@ export default function SubmissionView({ courseId, students, studentsWithData })
       .catch(() => {});
   }, [courseId]);
 
-  // Students with data files are considered "submitted" for the selected assignment
+  // Collect all submission records from localStorage (all students)
+  const allSubmissions = {};
+  for (const s of students) {
+    const key = `edu_submissions_${s['学生ID']}_${courseId}`;
+    try {
+      const data = JSON.parse(localStorage.getItem(key) || '{}');
+      if (Object.keys(data).length > 0) allSubmissions[s['学生ID']] = data;
+    } catch {}
+  }
+
   const dataIds = new Set(studentsWithData || []);
   const hw = assignments.find((a) => a.id === selectedHw);
-  const submittedCount = students.filter((s) => dataIds.has(s['学生ID'])).length;
+
+  // A student is "submitted" if: has data file OR has localStorage submission for this assignment
+  const isSubmitted = (studentId) => {
+    return dataIds.has(studentId) || allSubmissions[studentId]?.[selectedHw]?.submitted;
+  };
+
+  const getSubmissionInfo = (studentId) => {
+    return allSubmissions[studentId]?.[selectedHw] || null;
+  };
+
+  const submittedCount = students.filter((s) => isSubmitted(s['学生ID'])).length;
 
   return (
     <div style={{ padding: 24, maxWidth: 800, margin: '0 auto' }}>
@@ -51,21 +72,26 @@ export default function SubmissionView({ courseId, students, studentsWithData })
                 <th>姓名</th>
                 <th>班级</th>
                 <th>状态</th>
+                <th>得分</th>
+                <th>提交时间</th>
               </tr>
             </thead>
             <tbody>
               {students.map((s) => {
-                const hasData = dataIds.has(s['学生ID']);
+                const submitted = isSubmitted(s['学生ID']);
+                const info = getSubmissionInfo(s['学生ID']);
                 return (
                   <tr key={s['学生ID']}>
                     <td>{s['学生ID']}</td>
                     <td>{s['姓名']}</td>
                     <td>{s.class || '-'}</td>
                     <td>
-                      <span className={`sub-badge ${hasData ? 'sub-badge--done' : 'sub-badge--pending'}`}>
-                        {hasData ? '已提交' : '未提交'}
+                      <span className={`sub-badge ${submitted ? 'sub-badge--done' : 'sub-badge--pending'}`}>
+                        {submitted ? '已提交' : '未提交'}
                       </span>
                     </td>
+                    <td>{info?.totalScore ?? (dataIds.has(s['学生ID']) ? '-' : '-')}</td>
+                    <td style={{ color: 'var(--text-muted)' }}>{info?.date || '-'}</td>
                   </tr>
                 );
               })}
